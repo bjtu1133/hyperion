@@ -1,5 +1,7 @@
 let forms = {
   'newBrand' : {
+    'objType' : 'Brand',
+    'idField' : 0,
     'title' : {
       'default' : '添加新的品牌',
       'eng' : 'Add New Brand',
@@ -51,11 +53,11 @@ let forms = {
         'fieldType' : 'textarea',
         'required' : false
       },
-    ],
-    'objType' : 'Brand',
-    'idField' : 0
+    ]
   },
   'newProduct' : {
+    'objType' : 'Product',
+    'idField' : 1,
     'title' : {
       'default' : '添加新的型号',
       'eng' : 'Add New Product',
@@ -125,9 +127,64 @@ let forms = {
         'fieldType' : 'text',
         'required' : true
       }
-    ],
-    'objType' : 'Product',
-    'idField' : 1
+    ]
+  },
+  'newWarehouse' : {
+    'objType' : 'Warehouse',
+    'idField' : 1,
+    'title' : {
+      'default' : '添加新的仓库',
+      'eng' : 'Add New Warehouse',
+      'chs' : '添加新的仓库'
+    },
+    'fields' : [
+    {
+      'fieldName' : 'name',
+      'fieldLabel' : {
+        'default' : '仓库编号 :',
+        'eng' : 'Warehouse # :',
+        'chs' : '仓库编号 :'
+      },
+      'placeholder' : {
+        'default' : '请输入要添加的仓库名称 例如 ：SY01',
+        'eng' : 'Please Type the Product Feature, for Example "SY01"',
+        'chs' : '请输入要添加的仓库名称 例如 ：SY01'
+      },
+      'fieldType' : 'text',
+      'required' : true
+    },
+
+    {
+      'fieldName' : 'name',
+      'fieldLabel' : {
+        'default' : '仓库名称 :',
+        'eng' : 'Warehouse Name :',
+        'chs' : '仓库名称 :'
+      },
+      'placeholder' : {
+        'default' : '请输入要添加的仓库名称 例如 ：天骏沈阳仓库',
+        'eng' : 'Please Type the Product Feature, for Example "天骏沈阳仓库"',
+        'chs' : '请输入要添加的仓库名称 例如 ：天骏沈阳仓库'
+      },
+      'fieldType' : 'text',
+      'required' : true
+    },
+
+    {
+      'fieldName' : 'location',
+      'fieldLabel' : {
+        'default' : '位置 :',
+        'eng' : 'Location',
+        'chs' : '位置 :'
+      },
+      'placeholder' : {
+        'default' : '请输入要添加的仓库的位置 例如 ：抚顺市顺城区新城路路29号',
+        'eng' : 'Please Type the Product Feature, for Example "29 Xincheng Street, Shuncheng, Fushun"',
+        'chs' : '请输入要添加的仓库的位置 例如 ：抚顺市顺城区新城路路29号'
+      },
+      'fieldType' : 'textarea',
+      'required' : true
+    }]
   }
 };
 
