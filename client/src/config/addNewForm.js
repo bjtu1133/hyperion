@@ -131,7 +131,7 @@ let forms = {
   },
   'newWarehouse' : {
     'objType' : 'Warehouse',
-    'idField' : 1,
+    'idField' : 0,
     'title' : {
       'default' : '添加新的仓库',
       'eng' : 'Add New Warehouse',
@@ -139,7 +139,7 @@ let forms = {
     },
     'fields' : [
     {
-      'fieldName' : 'name',
+      'fieldName' : 'warehouseno',
       'fieldLabel' : {
         'default' : '仓库编号 :',
         'eng' : 'Warehouse # :',
