@@ -60,7 +60,7 @@ let forms = {
       },
     ],
     'objType' : 'Brand',
-    'idField' : 'brandName'
+    'idField' : 0
   },
   'newProduct' : {
     'title' : {
@@ -134,7 +134,7 @@ let forms = {
       }
     ],
     'objType' : 'Product',
-    'idField' : 'fieldName'
+    'idField' : 1
   }
 };
 
@@ -187,7 +187,10 @@ export default function addNewCtl (AddNewService,$stateParams,$scope){
 
   $scope.submit = ()=>{
 
-    let idField = form.idField;
+    let objType = form.objType;
+    let idField = $scope.fields[form.idField]
+
+
     let formData = {}
 
     $scope.fields.forEach((currentValue) => {
@@ -198,11 +201,16 @@ export default function addNewCtl (AddNewService,$stateParams,$scope){
       formData[currentValue.fieldName] = currentValue.value;
     });
 
-    AddNewService.get({'objType':'Brand','idValue':'GoodYear','idField':'brandName'},(object)=>{
-      if(object && object._id){
-        console.log('exist');
+    let q = {'objType':objType,
+            'idField':idField.fieldName,
+            'idValue':idField.value}
+
+    AddNewService.get(q,(object)=>{
+
+      if(object.doc){
+        alert('添加的对象已经存在');
       }else{
-        object.objType = form.objType;
+        object.objType = objType;
         object.data = formData;
         object.$save();
       }
