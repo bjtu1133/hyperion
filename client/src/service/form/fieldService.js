@@ -81,8 +81,9 @@ export default function fieldService(moduleName){
       createNew : (fieldDef,fieldIdx) => {
 
         let field = TextField.createNew(fieldDef,fieldIdx);
+        
+        if (fieldDef.optionsConfig){
 
-        if (fieldDef.optionsService){
           field.fieldType = fieldDef.fieldType;
           field.options = loadOptions(fieldDef.optionsConfig);
         }else{
