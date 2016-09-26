@@ -78,9 +78,12 @@ let forms = {
         },
         'fieldType' : 'text-search',
         'required' : true,
-        'options' : '',
-        'optionsService' : 'Brands',
-        'optionsQuery' : ''
+        'optionsConfig' : {
+          'objType' : 'Brand',
+          'header' : ['brandName',' | ','nickName'],
+          'body' : ['description'],
+          'value' : ['brandName']
+        }
       },
       {
         'fieldName' : 'productno',

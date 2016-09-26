@@ -12,7 +12,7 @@ objectRouter.get("/:objType",jsonParser,(req,res)=>{
     if(err){
       res.status("500").send("internal error");
     }
-    res.json({doc});
+    res.json(doc);
   });
 });
 
