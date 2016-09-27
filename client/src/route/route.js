@@ -8,14 +8,21 @@ export default function route (moduleName){
 
     $stateProvider.state('hyperion',{
       url : '/hyperion',
-      templateUrl: './src/template/hyperion/index.html',
-      //controller : 'hyperionIndexController'
+      templateUrl: './src/template/hyperion/index.html'
     });
 
     $stateProvider.state('hyperion.addNew',{
       url : '/add/:formType',
-      templateUrl : './src/template/addNew/index.html',
+      templateUrl : './src/template/form/addNew.html',
       controller : 'addNewCtl'
     });
+
+    $stateProvider.state('hyperion.storage',{
+      url : '/storage/:formType',
+      templateUrl : './src/template/form/storage.html',
+      controller : 'storageCtl'
+    });
+
+
   });
 }
