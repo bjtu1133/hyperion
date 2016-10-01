@@ -10,13 +10,8 @@ export default function addNewCtl (AddNewService,FormFieldService,$stateParams,$
     return;
   }
   let form = forms[formType];
-  /*
-  * Set title of the form
-  */
+
   $scope.formTypeLabel = form.title['default'];
-  /*
-  * Create data object of the form
-  */
 
   $scope.fields = FormFieldService.createFields(form.fields);
 
