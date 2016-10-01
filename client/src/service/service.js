@@ -18,8 +18,11 @@ export default function service($resource){
   * Service to achieve objects
   */
   module.factory('ObjectService',($resource) => {
-    return $resource('/object/:objType',null,{
-      'get' : {method : 'GET', isArray : true, url :'/object/:objType'}
+    return $resource('/object',null,{
+      'get' : {method : 'GET', isArray : true, url :'/object/:objType'},
+      'getById' : {method : 'GET', isArray : false, url :'/object/:objType/:idField/:idValue'},
+      'addNew' : {method : 'POST'},
+      'increase' : {method : 'POST', url : '/object/increase'}
     });
   });
 

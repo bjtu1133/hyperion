@@ -4,7 +4,7 @@ export default function fieldService(moduleName){
   let factory = angular.module(moduleName).factory;
 
   factory('FormFieldService',['TextField','TextSearchField',
-  (TextField,TextSearchField)=>{
+  (TextField,TextSearchField,ComputedField)=>{
     return {
       createFields : (fieldsDef) => {
         if(!fieldsDef || fieldsDef.length < 0) reuturn;
@@ -28,7 +28,6 @@ export default function fieldService(moduleName){
       }
     };
   }]);
-
   factory('TextSearchField',['TextField','ObjectService',
     (TextField,ObjectService) => {
     function loadOptions (config,query){
@@ -81,7 +80,6 @@ export default function fieldService(moduleName){
       createNew : (fieldDef,fieldIdx) => {
 
         let field = TextField.createNew(fieldDef,fieldIdx);
-        
         if (fieldDef.optionsConfig){
 
           field.fieldType = fieldDef.fieldType;
@@ -108,6 +106,7 @@ export default function fieldService(moduleName){
         field.fieldLabel = fieldDef.fieldLabel;
         field.required = fieldDef.required;
         field.fieldType = fieldDef.fieldType;
+        field.hidden = fieldDef.hidden;
         return field;
       }
     };

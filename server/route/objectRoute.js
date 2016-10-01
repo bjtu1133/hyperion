@@ -16,4 +16,49 @@ objectRouter.get("/:objType",jsonParser,(req,res)=>{
   });
 });
 
+objectRouter.get("/:objType/:idField/:idValue",jsonParser,(req,res)=>{
+  let objType = req.params.objType;
+  let id = req.params.idValue;
+  let idField = req.params.idField;
+  if(!id || !idField ||!objType){
+    res.status("400").send("bad request");
+  }
+
+  let q = new Map();
+  q.set(idField,id);
+
+  mongoUtil.getCollection(objType).find(q).limit(1).next((err,doc)=>{
+    if(err){
+      console.log(err);
+    }
+    res.json({doc});
+  });
+});
+
+objectRouter.post("/",jsonParser,(req,res) => {
+
+  let reqBody = req.body;
+  if(!reqBody || !reqBody.objType || !reqBody.data){
+    res.status(400).send("Bad Request");
+  }
+
+  let result = mongoUtil.getCollection(reqBody.objType).insertOne(reqBody.data);
+  res.json(result);
+});
+
+objectRouter.post("/increase",jsonParser,(req,res) => {
+
+  let reqBody = req.body;
+  console.log(reqBody);
+
+  if(!reqBody || !reqBody.objType || 
+    !reqBody.data || !reqBody.q){
+    res.status(400).send("Bad Request");
+  }
+
+  mongoUtil.getCollection(reqBody.objType).update(reqBody.q,{$inc : reqBody.data});
+
+  res.json({});
+});
+
 module.exports = objectRouter;

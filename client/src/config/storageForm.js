@@ -1,7 +1,5 @@
 let forms = {
   'add' : {
-    'objType' : 'Storage',
-    'idField' : 1,
     'title' : {
       'default' : '进货单',
       'eng' : 'Add Storage',
@@ -77,7 +75,7 @@ let forms = {
             'eng' : 'Please Type Amount, for Example "100"',
             'chs' : '请输入数量 例如 ：100'
           },
-          'fieldType' : 'text',
+          'fieldType' : 'number',
           'required' : true
       },
 

@@ -3,26 +3,34 @@
   <h3>{{formTypeLabel}}</h3>
   <form ng-submit = "submit()">
     <ul class="list-group" >
-      <li ng-repeat="field in fields" class="input-group well-sm col-lg-6">
+      <li ng-repeat="field in fields" class="input-group well-sm col-lg-6" ng-show="!field.hidden">
         <span class="input-group-addon">{{field.fieldLabel["default"]}}</span>
         <input ng-if= "field.fieldType == 'text'"
                ng-model = "field.value"
+               ng-change="onChange(field.fieldName,field.value)"
                type="text-area" class="form-control"
-               placeholder="{{field.placeholder['default']}}" aria-describedby="basic-addon1">
+               placeholder="{{field.placeholder['default']}}">
+
+        <input ng-if= "field.fieldType == 'number'"
+               ng-model = "field.value"
+               ng-change="onChange(field.fieldName,field.value)"
+               type="number" class="form-control"
+               placeholder="{{field.placeholder['default']}}">
 
         <textarea ng-if = "field.fieldType == 'textarea'"
                   ng-model = "field.value"
                   class = "form-control" rows="4"
-                  placeholder="{{field.placeholder['default']}}" aria-describedby="basic-addon1"></textarea>
+                  placeholder="{{field.placeholder['default']}}"></textarea>
 
         <div ng-if= "field.fieldType == 'text-search'" class="dropdown">
           <input ng-model = "field.value"
                  type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-                 placeholder="{{field.placeholder['default']}}" aria-describedby="basic-addon1">
+                 placeholder="{{field.placeholder['default']}}"
+                 ng-change="onchange(field.fieldName,field.value)">
           <div class="dropdown-menu dropdown-menu-down list-group" style="top:35px;padding:0">
             <a  href="" class="list-group-item"
                ng-repeat = "option in field.options | filter : field.value"
-               ng-click = "field.setFieldValue(option.value)" >
+               ng-click = "field.setFieldValue(option.value);onChange(field.fieldName,option.value)" >
                 <h5 class="list-group-item-heading">{{option.header}}</h5>
                 <h6>{{option.body}}</h6>
             </a>

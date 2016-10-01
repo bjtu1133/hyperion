@@ -19,10 +19,8 @@ export default function route (moduleName){
 
     $stateProvider.state('hyperion.storage',{
       url : '/storage/:formType',
-      templateUrl : './src/template/form/storage.html',
+      templateUrl : './src/template/form/addNew.html',
       controller : 'storageCtl'
     });
-
-
   });
 }
