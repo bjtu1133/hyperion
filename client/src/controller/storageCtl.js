@@ -22,15 +22,19 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
         object.data = $scope.formData;
         object.$addNew();
       }else{
-        if(formType == 'add'){
+        if(formType == 'decrease'){
+          console.log('object.doc.amount');
+          if(object.doc.amount < $scope.formData['amount']){
+            alert("库存不足");
+            return;
+          }
+          object.data = {'amount' : -$scope.formData['amount']}
+
+        } else if(formType == 'increase'){
 
           object.data = {'amount' : $scope.formData['amount']}
-
-        } else {
-
-          object.data = {'amount' : -$scope.formData['amount']}
         }
-
+        object.q = {'storageId' : $scope.formData['storageId']};
         object.$increase();
       }
     });
