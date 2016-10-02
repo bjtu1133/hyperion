@@ -1,28 +1,12 @@
+
+import fieldService from './form/fieldService';
+
 export default function service($resource){
- /*
- * Sample Code
- */
-  angular.module('hyperion')
-  .factory('Brands', ($resource)=>{
-    return $resource('/brand',null,{
-      'update' : { method:'PUT' },
-      'save'  : {method : 'POST'}
-    });
-  });
 
-  angular.module('hyperion')
-  .factory('Storage', ($resource)=>{
-    return $resource('/storage',null,{
-      'update' : { method:'PUT' },
-      'get' : {method : 'Get' , isArray : false},
-      'save'  : {method : 'POST'}
-    });
-  });
+  let module = angular.module('hyperion');
   /*
-  * End of Sample Code
+  * Service using by Add New
   */
-
-  let module = angular.module('hyperion')
   module.factory('AddNewService',($resource) => {
     return $resource('/addNew/:objType/:idField/:idValue',null,{
       'get' : {method : 'GET', isArray : false},
@@ -30,4 +14,17 @@ export default function service($resource){
       'save' : {method : 'POST'}
     });
   });
+  /*
+  * Service to achieve objects
+  */
+  module.factory('ObjectService',($resource) => {
+    return $resource('/object',null,{
+      'get' : {method : 'GET', isArray : true, url :'/object/:objType'},
+      'getById' : {method : 'GET', isArray : false, url :'/object/:objType/:idField/:idValue'},
+      'addNew' : {method : 'POST'},
+      'increase' : {method : 'POST', url : '/object/increase'}
+    });
+  });
+
+  fieldService('hyperion');
 }
