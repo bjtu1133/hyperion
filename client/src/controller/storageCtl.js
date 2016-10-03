@@ -19,13 +19,23 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
 
       object.objType = 'Storage';
       if(!object.doc){
-        object.data = $scope.formData;
-        object.$addNew();
+        if(formType == 'decrease'){
+          alert('库存不存在');
+        }else{
+          object.data = $scope.formData;
+          object.$addNew([].()=>{
+            alert('进库单已经提交');
+          },
+          ()=>{
+            alert('进库单提交失败');
+          });
+        }
       }else{
         if(formType == 'decrease'){
           console.log('object.doc.amount');
           if(object.doc.amount < $scope.formData['amount']){
-            alert("库存不足");
+            console.log(object.doc.amount);
+            alert('库存不足');
             return;
           }
           object.data = {'amount' : -$scope.formData['amount']}
@@ -35,7 +45,13 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
           object.data = {'amount' : $scope.formData['amount']}
         }
         object.q = {'storageId' : $scope.formData['storageId']};
-        object.$increase();
+
+        object.$increase([],()=>{
+          alert('进库单已经提交');
+        },
+        () => {
+          alert('进库单提交失败');
+        });
       }
     });
   }
