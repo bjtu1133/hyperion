@@ -23,7 +23,7 @@ export default function service($resource){
       'get' : {method : 'GET', isArray : true, url :'/object/:objType'},
       'getById' : {method : 'GET', isArray : false, url :'/object/:objType/:idField/:idValue'},
       'addNew' : {method : 'POST'},
-      'increase' : {method : 'POST', url : '/object/increase'}
+      'update' : {method : 'POST', url : '/object/update'}
     });
   });
 
