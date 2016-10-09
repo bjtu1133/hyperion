@@ -23,7 +23,7 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
           alert('库存不存在');
         }else{
           object.data = $scope.formData;
-          object.$addNew([].()=>{
+          object.$addNew([],()=>{
             alert('进库单已经提交');
           },
           ()=>{

@@ -6,6 +6,7 @@ export default function service($resource){
   let module = angular.module('hyperion');
   /*
   * Service using by Add New
+  * TO DO merge addNewService to ObjectService
   */
   module.factory('AddNewService',($resource) => {
     return $resource('/addNew/:objType/:idField/:idValue',null,{

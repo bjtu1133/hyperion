@@ -22,5 +22,11 @@ export default function route (moduleName){
       templateUrl : './src/template/form/addNew.html',
       controller : 'storageCtl'
     });
+
+    $stateProvider.state('hyperion.list',{
+      url : '/list/:formType',
+      templateUrl : './src/template/form/listView.html',
+      controller : 'listCtl'
+    });
   });
 }
