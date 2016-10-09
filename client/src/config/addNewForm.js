@@ -88,14 +88,14 @@ let forms = {
       {
         'fieldName' : 'productno',
         'fieldLabel' : {
-          'default' : '型号 :',
+          'default' : '代码 :',
           'eng' : 'Product # :',
-          'chs' : '型号:'
+          'chs' : '代码:'
         },
         'placeholder' : {
-          'default' : '请输入要添加的型号 例如 ：FS90823',
+          'default' : '请输入要添加的代码 例如 ：FS90823',
           'eng' : 'Please Type the Product #, for Example "FS90823"',
-          'chs' : '请输入要添加的型号 例如 ：FS90823'
+          'chs' : '请输入要添加的代码 例如 ：FS90823'
         },
         'fieldType' : 'text',
         'required' : true

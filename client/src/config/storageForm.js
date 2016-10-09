@@ -30,9 +30,9 @@ let forms = {
       {
         'fieldName' : 'productno',
         'fieldLabel' : {
-          'default' : '型号 :',
+          'default' : '代码 :',
           'eng' : 'Product # :',
-          'chs' : '型号:'
+          'chs' : '代码:'
         },
         'placeholder' : {
           'default' : '请输入要添加的型号 例如 ：FS90823',
