@@ -34,11 +34,11 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
         if(formType == 'decrease'){
           console.log('object.doc.amount');
           if(object.doc.amount < $scope.formData['amount']){
-            console.log(object.doc.amount);
             alert('库存不足');
             return;
+          }else{
+            object.data = {'amount' : -$scope.formData['amount']}
           }
-          object.data = {'amount' : -$scope.formData['amount']}
 
         } else if(formType == 'increase'){
 
@@ -47,10 +47,10 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
         object.q = {'storageId' : $scope.formData['storageId']};
 
         object.$increase([],()=>{
-          alert('进库单已经提交');
+          alert('进/出库单已经提交');
         },
         () => {
-          alert('进库单提交失败');
+          alert('进/出库单提交失败');
         });
       }
     });

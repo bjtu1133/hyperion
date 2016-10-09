@@ -6,7 +6,7 @@ let forms = {
       'chs' : '进货单'
     },
     'resourceFieldsKeys' : [
-      'storageId', 'productno', 'brandName', 'period','warehouseno','location','amount'
+      'storageId', 'productno', 'brandName', 'period','warehouseno','location','amount','lastUpdatedTime'
     ],
     'headers' : [
       {
@@ -43,6 +43,11 @@ let forms = {
           'default' : '数量 :',
           'eng' : 'Amount :',
           'chs' : '数量 :'
+      },
+      {
+          'default' : '最近更新时间 :',
+          'eng' : 'Last Updated By :',
+          'chs' : '最近更新时间 :'
       }
     ]
   }
