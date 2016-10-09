@@ -1,0 +1,12 @@
+<table class="table table-striped small">
+  <thead>
+    <tr>
+      <th ng-repeat = "header in headers">{{header['default']}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="resource in resourceList">
+      <td ng-repeat = "key in keys">{{resource[key]}}</th>
+    </tr>
+  </tbody>
+</table>
