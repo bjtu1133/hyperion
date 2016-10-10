@@ -23,7 +23,9 @@ export default function service($resource){
       'get' : {method : 'GET', isArray : true, url :'/object/:objType'},
       'getById' : {method : 'GET', isArray : false, url :'/object/:objType/:idField/:idValue'},
       'addNew' : {method : 'POST'},
-      'update' : {method : 'POST', url : '/object/update'}
+      'update' : {method : 'POST', url : '/object/update'},
+      'getObjectsByField' : {method : 'GET', isArray : true, url :'/objects/:objType/:idField/:idValue'},
+      'queryObjects' : {method : 'GET', isArray : true, url:'/objects'}
     });
   });
 

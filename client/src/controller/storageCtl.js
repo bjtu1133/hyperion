@@ -39,7 +39,7 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
             alert('库存不足');
             return;
           }else{
-            object.data = {'amount' : -$scope.formData['amount']}
+            object.incData = {'amount' : -$scope.formData['amount']}
           }
 
         } else if(formType == 'increase'){
@@ -47,10 +47,12 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
           object.incData = {
             'amount' : $scope.formData['amount'],
           };
-          object.setData = {
-            'lastUpdatedTime' : $scope.formData['lastUpdatedTime']
-          }
         }
+
+        object.setData = {
+          'lastUpdatedTime' : $scope.formData['lastUpdatedTime']
+        }
+
         object.q = {'storageId' : $scope.formData['storageId']};
 
         object.$update([],()=>{
@@ -74,8 +76,8 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
       'amount' : $scope.formData['amount'],
       'updatedTime' : Date.now(),
       'warehouseno' : $scope.formData['warehouseno'],
-      'location' : $scope.formData['location'],
-      'operator' : '胡建博',
+      'warehouseArea' : $scope.formData['warehousenoArea'],
+      'operator' : $scope.formData['operator'],
     };
     record.objType = 'StorageRecord';
 
@@ -84,10 +86,18 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
 
   $scope.onChange = (fieldName,value)=>{
     let formData = $scope.formData;
-    if(fieldName){
+    formData[fieldName] = value;
+    console.log(fieldName);
+    if(formType == 'increase' &&fieldName){
       formData[fieldName] = value;
       formData['storageId'] = formData['warehouseno']+
-          '/'+formData['productno']+'/'+formData['period'];
+          '/'+formData['warehouseArea']+'/'+formData['productno']+'/'+formData['period'];
+    }else if (fieldName == 'storageId'){
+      formData['storageId'] = value;
     }
   };
+
+  $scope.reloadFieldOption = () => {
+
+  }
 }

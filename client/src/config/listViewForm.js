@@ -3,7 +3,7 @@ let forms = {
     'objType' : 'Storage',
 
     'fieldsKeys' : [
-      'storageId', 'productno', 'brandName', 'period', 'warehouseno', 'location', 'amount', 'lastUpdatedTime'
+      'storageId', 'productno', 'brandName', 'period', 'warehouseno', 'warehouseArea', 'amount', 'lastUpdatedTime'
     ],
     'fields' : {
       'storageId' : {
@@ -46,7 +46,7 @@ let forms = {
         },
         'type' : 'text'
       },
-      'location' : {
+      'warehouseArea' : {
         'label' : {
           'default' : '库位 :',
           'eng' : 'Location:',

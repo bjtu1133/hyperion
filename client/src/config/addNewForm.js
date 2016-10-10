@@ -188,6 +188,32 @@ let forms = {
       'fieldType' : 'textarea',
       'required' : true
     }]
+  },
+  'newWarehouseArea' : {
+    'objType' : 'WarehouseArea',
+    'idField' : 0,
+    'title' : {
+      'default' : '添加新的库位',
+      'eng' : 'Add New Warehouse Area',
+      'chs' : '添加新的库位'
+    },
+    'fields' : [
+      {
+        'fieldName' : 'warehouseArea',
+        'fieldLabel' : {
+          'default' : '库位 :',
+          'eng' : 'Area :',
+          'chs' : '库位 :'
+        },
+        'placeholder' : {
+          'default' : '请输入库位 例如 ：A01',
+          'eng' : 'Please Type Warehouse Area #, for Example "A01"',
+          'chs' : '请输入库位 例如 ：A01'
+        },
+        'fieldType' : 'text',
+        'required' : true,
+      },
+      ]
   }
 };
 
