@@ -46,17 +46,19 @@ objectRouter.post("/",jsonParser,(req,res) => {
   res.json(result);
 });
 
-objectRouter.post("/increase",jsonParser,(req,res) => {
+objectRouter.post("/update",jsonParser,(req,res) => {
 
   let reqBody = req.body;
-  console.log(reqBody);
 
-  if(!reqBody || !reqBody.objType || 
-    !reqBody.data || !reqBody.q){
+  if(!reqBody || !reqBody.objType ||!reqBody.q){
     res.status(400).send("Bad Request");
   }
 
-  mongoUtil.getCollection(reqBody.objType).update(reqBody.q,{$inc : reqBody.data});
+  let incData = reqBody.incData;
+  let upData = reqBody.setData;
+
+  let update = mongoUtil.getCollection(reqBody.objType).update(reqBody.q,
+    {$inc : reqBody.incData,$set : reqBody.setData});
 
   res.json({});
 });

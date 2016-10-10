@@ -88,14 +88,14 @@ let forms = {
       {
         'fieldName' : 'productno',
         'fieldLabel' : {
-          'default' : '型号 :',
+          'default' : '代码 :',
           'eng' : 'Product # :',
-          'chs' : '型号:'
+          'chs' : '代码:'
         },
         'placeholder' : {
-          'default' : '请输入要添加的型号 例如 ：FS90823',
+          'default' : '请输入要添加的代码 例如 ：FS90823',
           'eng' : 'Please Type the Product #, for Example "FS90823"',
-          'chs' : '请输入要添加的型号 例如 ：FS90823'
+          'chs' : '请输入要添加的代码 例如 ：FS90823'
         },
         'fieldType' : 'text',
         'required' : true
@@ -188,6 +188,32 @@ let forms = {
       'fieldType' : 'textarea',
       'required' : true
     }]
+  },
+  'newWarehouseArea' : {
+    'objType' : 'WarehouseArea',
+    'idField' : 0,
+    'title' : {
+      'default' : '添加新的库位',
+      'eng' : 'Add New Warehouse Area',
+      'chs' : '添加新的库位'
+    },
+    'fields' : [
+      {
+        'fieldName' : 'warehouseArea',
+        'fieldLabel' : {
+          'default' : '库位 :',
+          'eng' : 'Area :',
+          'chs' : '库位 :'
+        },
+        'placeholder' : {
+          'default' : '请输入库位 例如 ：A01',
+          'eng' : 'Please Type Warehouse Area #, for Example "A01"',
+          'chs' : '请输入库位 例如 ：A01'
+        },
+        'fieldType' : 'text',
+        'required' : true,
+      },
+      ]
   }
 };
 

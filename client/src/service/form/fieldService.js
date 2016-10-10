@@ -47,7 +47,7 @@ export default function fieldService(moduleName){
             let option = {
               header : '',
               body : '',
-              value : config.value
+              value : ''
             };
             if(config.header && config.header.length > 0){
               config.header.forEach((key)=>{
@@ -67,8 +67,16 @@ export default function fieldService(moduleName){
                 }
               })
             }
-            option.value = object[config.value];
-            options.push(option)
+            if(config.value && config.value.length > 0){
+              config.value.forEach((key)=>{
+                if (object[key]){
+                  option.value += object[key];
+                }else{
+                  option.value += key;
+                }
+            })
+          }
+            options.push(option);
           });
           return options;
         }else
@@ -101,6 +109,7 @@ export default function fieldService(moduleName){
             field.value = value;
           }
         };
+        field.readonly = fieldDef.readonly;
         field.fieldName = fieldDef.fieldName;
         field.placeholder = fieldDef.placeholder;
         field.fieldLabel = fieldDef.fieldLabel;

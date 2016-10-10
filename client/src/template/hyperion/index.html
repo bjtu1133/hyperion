@@ -13,13 +13,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <a ui-sref="hyperion.storage({'formType':'increase'})">进货
+          <a ui-sref="hyperion.storage({'formType':'increase'})">进库
             <span class="sr-only">(current)</span></a>
         </li>
-        <li><a ui-sref="hyperion.storage({'formType':'decrease'})">出货
+        <li><a ui-sref="hyperion.storage({'formType':'decrease'})">出库
           </a></li>
-        <li><a ui-sref="hyperion.list({'formType':'storage'})">盘点</a></li>
-        <li><a href="#">记录</a></li>
+        <li><a ui-sref="hyperion.list({'formType':'storageDashboard'})">盘点</a></li>
+        <li><a ui-sref="hyperion.list({'formType':'storageRecordDashboard'})">记录</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">添加新的<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -27,6 +27,7 @@
             <li><a ui-sref="hyperion.addNew({'formType':'newProduct'})">型号</a></li>
             <li role="separator" class="divider"></li>
             <li><a ui-sref="hyperion.addNew({'formType':'newWarehouse'})">仓库</a></li>
+            <li><a ui-sref="hyperion.addNew({'formType':'newWarehouseArea'})">库位</a></li>
             <li role="separator" class="divider"></li>
             <li><a ui-sref="hyperion.addNew()">用户</a></li>
           </ul>
