@@ -77,7 +77,7 @@ let forms = {
     'objType' : 'StorageRecord',
 
     'fieldsKeys' : [
-      'storageId', 'operation', 'amount', 'updatedTime', 'warehouseno', 'location', 'operator'
+      'storageId', 'operation', 'amount', 'updatedTime', 'warehouseno', 'warehouseArea', 'operator'
     ],
     'fields' : {
       'storageId' : {
@@ -120,7 +120,7 @@ let forms = {
         },
         'type' : 'text'
       },
-      'location' : {
+      'warehouseArea' : {
         'label' : {
           'default' : '库位 :',
           'eng' : 'Location:',

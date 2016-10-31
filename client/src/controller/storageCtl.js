@@ -13,6 +13,7 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
   $scope.formData = {};
   $scope.formData.lastUpdatedTime = Date.now();
   $scope.submit = ()=>{
+    $scope.populateFormData();
     let q = {'objType':'Storage',
             'idField':'storageId',
             'idValue':$scope.formData['storageId']};
@@ -76,28 +77,67 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
       'amount' : $scope.formData['amount'],
       'updatedTime' : Date.now(),
       'warehouseno' : $scope.formData['warehouseno'],
-      'warehouseArea' : $scope.formData['warehousenoArea'],
+      'warehouseArea' : $scope.formData['warehouseArea'],
       'operator' : $scope.formData['operator'],
     };
     record.objType = 'StorageRecord';
 
     ObjectService.addNew(record);
   }
+/*
+* Re Caculate storageId when fields Change
+*/
+  $scope.onChange = (field)=>{
 
-  $scope.onChange = (fieldName,value)=>{
-    let formData = $scope.formData;
-    formData[fieldName] = value;
-    console.log(fieldName);
-    if(formType == 'increase' &&fieldName){
-      formData[fieldName] = value;
-      formData['storageId'] = formData['warehouseno']+
-          '/'+formData['warehouseArea']+'/'+formData['productno']+'/'+formData['period'];
-    }else if (fieldName == 'storageId'){
-      formData['storageId'] = value;
+    let fieldName = field.fieldName;
+    if(fieldName == 'storageId'){
+      $scope.populateObjectToFieldsByKeys(field.valueObject, $scope.fields,
+          ['warehouseno', 'warehouseArea', 'productno', 'brandName', 'period']);
+    }else {
+      if(fieldName == 'productno'){
+        $scope.populateObjectToFieldsByKeys(field.valueObject,$scope.fields,['brandName']);
+      }
+      $scope.populateStorageIdField();
     }
   };
 
-  $scope.reloadFieldOption = () => {
+  $scope.populateObjectToFieldsByKeys = (object,fields,keys)=>{
+    if(!object){
+      $scope.clearFieldsByKeys(fields,keys);
+      return;
+    }
+    let objectKeys = (keys) ? keys : Object.keys(object);
+    fields.forEach((curField)=>{
+      if(objectKeys.includes(curField.fieldName)){
+        curField.setFieldValue (object[curField.fieldName]);
+      }
+    });
+  };
 
-  }
+  $scope.clearFieldsByKeys = (fields,keys)=>{
+    fields.forEach((curField)=>{
+      if(keys.includes(curField.fieldName)){
+        curField.setFieldValue ('',null);
+      }
+    });
+  };
+  $scope.populateStorageIdField = ()=>{
+
+    let storageIdField = $scope.fields[0];
+    let formula = [1,2,3,5];
+    let delimiter = '/';
+    let storageId = $scope.fields[formula[0]].value;
+    for(let i=1 ; i< formula.length; i++){
+      storageId = storageId + delimiter + $scope.fields[formula[i]].value;
+    }
+    storageIdField.setFieldValue(storageId,{});
+  };
+
+  $scope.populateFormData = ()=>{
+    let formData = $scope.formData;
+    let fields = $scope.fields;
+    for(let i in fields){
+      formData[fields[i].fieldName] = fields[i].value;
+    }
+  };
 }

@@ -5,7 +5,28 @@ let forms = {
       'eng' : 'Add Storage',
       'chs' : '进库单'
     },
+    'idField' : 0,
     'fields' : [
+      {
+        'fieldName' : 'storageId',
+        'fieldLabel' : {
+          'default' : '库存编号 :',
+          'eng' : 'Storage # :',
+          'chs' : '库存编号 :'
+        },
+        'placeholder' : {
+          'default' : '请输入库存编号 例如 ：SY01',
+          'eng' : 'Please Type Storage #, for Example "SY01/AC/FS90832/6666"',
+          'chs' : '请输入库存编号 例如 ：SY01'
+        },
+        'fieldType' : 'text-search',
+        'required' : true,
+        'optionsConfig' : {
+          'objType' : 'Storage',
+          'body' : ['storageId'],
+          'value' : ['storageId']
+        }
+      },
       {
         'fieldName' : 'warehouseno',
         'fieldLabel' : {
@@ -67,6 +88,22 @@ let forms = {
           'body' : ['brandName',' | ','size',' | ','feature'],
           'value' : ['productno']
         }
+      },
+      {
+        'fieldName' : 'brandName',
+        'fieldLabel' : {
+          'default' : '品牌名称 :',
+          'eng' : 'Brand Name :',
+          'chs' : '品牌名称:'
+        },
+        'placeholder' : {
+          'default' : '请输入品牌的英文名称 例如 ：Goodyear',
+          'eng' : 'Please Type the English Brand Name, for Example "Goodyear"',
+          'chs' : '请输入品牌的英文名称 例如 ： Goodyear'
+        },
+        'fieldType' : 'text',
+        'required' : true,
+        'readonly' : true
       },
       {
           'fieldName' : 'period',
