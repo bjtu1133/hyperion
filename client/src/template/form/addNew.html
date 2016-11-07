@@ -7,7 +7,7 @@
         <span class="input-group-addon">{{field.fieldLabel["default"]}}</span>
         <input ng-if= "field.fieldType == 'text'"
                ng-model = "field.value"
-               ng-change="onChange(field.fieldName,field.value)"
+               ng-change="onChange(field)"
                ng-readonly = "field.readonly"
                type="text-area" class="form-control"
                placeholder="{{field.placeholder['default']}}">
@@ -15,7 +15,7 @@
         <input ng-if= "field.fieldType == 'number'"
                ng-model = "field.value"
                ng-readonly = "field.readonly"
-               ng-change="onChange(field.fieldName,field.value)"
+               ng-change="onChange(field)"
                type="number" class="form-control"
                placeholder="{{field.placeholder['default']}}">
 
@@ -30,12 +30,12 @@
                  ng-readonly = "field.readonly"
                  type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                  placeholder="{{field.placeholder['default']}}"
-                 ng-change="onchange(field.fieldName,field.value)"
+                 ng-blur="field.matchValueObject(field); onChange(field);"
                  ng-readonly = "{{field.readonly}}">
           <div class="dropdown-menu dropdown-menu-down list-group" style="top:35px;padding:0">
             <a  href="" class="list-group-item"
                ng-repeat = "option in field.options | filter : field.value"
-               ng-click = "field.setFieldValue(option.value);onChange(field.fieldName,option.value)" >
+               ng-click = "field.setFieldValue(option.value,option.object);onChange(field)" >
                 <h5 class="list-group-item-heading">{{option.header}}</h5>
                 <h6>{{option.body}}</h6>
             </a>

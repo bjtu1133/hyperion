@@ -8,6 +8,7 @@ export default function listCtl(ObjectService,$stateParams,$scope){
   * Table Header
   */
   $scope.fields = form.fields;
+  console.log($scope.fields);
   /*
   * Table body data
   */
@@ -30,6 +31,7 @@ export default function listCtl(ObjectService,$stateParams,$scope){
       }
       $scope.resourceList.push(resourceItem);
     });
+
   },
   (err)=>{
     console.log(err);

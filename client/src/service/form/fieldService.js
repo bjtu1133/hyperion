@@ -4,10 +4,11 @@ export default function fieldService(moduleName){
   let factory = angular.module(moduleName).factory;
 
   factory('FormFieldService',['TextField','TextSearchField',
-  (TextField,TextSearchField,ComputedField)=>{
+  (TextField,TextSearchField)=>{
     return {
       createFields : (fieldsDef) => {
-        if(!fieldsDef || fieldsDef.length < 0) reuturn;
+
+        if(!fieldsDef || fieldsDef.length < 0) return;
 
         let fields = [];
 
@@ -47,7 +48,8 @@ export default function fieldService(moduleName){
             let option = {
               header : '',
               body : '',
-              value : ''
+              value : '',
+              object : object.toJSON()
             };
             if(config.header && config.header.length > 0){
               config.header.forEach((key)=>{
@@ -92,6 +94,20 @@ export default function fieldService(moduleName){
 
           field.fieldType = fieldDef.fieldType;
           field.options = loadOptions(fieldDef.optionsConfig);
+          field.setFieldValue = (value,object) => {
+            field.value = value;
+            field.valueObject = object;
+          };
+          field.matchValueObject = (field) => {
+
+            for(let idx in field.options){
+              if(field.value == field.options[idx].value){
+                field.valueObject = field.options[idx].object;
+                return;
+              }
+            }
+            field.setFieldValue('',null);
+          }
         }else{
           field.fieldType = 'text';
         }
