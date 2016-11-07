@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><h4>{{title["default"]}}
+    <button class="btn btn-sm btn-primary"
+            ng-if="displayPrintButton" ng-click="print()"> 打印</button></h4>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+
+      <li class="list-group-item"
+          ng-repeat="field in summary.fields">
+          <span>{{field.fieldLabel["default"]}}</span>
+          <span>{{field.value}}</span>
+          <ul ul class="list-group" ng-if = "field.fieldType == 'propertyGroup'">
+            <li class="list-group-item"
+              ng-repeat="childField in field.fields">
+              <span>{{childField.fieldLabel["default"]}}</span>
+              <span>{{childField.value}}</span>
+            </li>
+          </ul>
+
+      </li>
+    </ul>
+
+</div>

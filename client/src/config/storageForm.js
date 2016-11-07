@@ -179,6 +179,101 @@ let forms = {
           'body' : ['storageId'],
           'value' : ['storageId']
         }
+      },{
+        'fieldName' : 'warehouseno',
+        'fieldLabel' : {
+          'default' : '仓库编号 :',
+          'eng' : 'Warehouse # :',
+          'chs' : '仓库编号 :'
+        },
+        'placeholder' : {
+          'default' : '请输入仓库编号 例如 ：SY01',
+          'eng' : 'Please Type Warehouse #, for Example "SY01"',
+          'chs' : '请输入仓库编号 例如 ：SY01'
+        },
+        'fieldType' : 'text-search',
+        'required' : true,
+        'readonly' : true,
+        'optionsConfig' : {
+          'objType' : 'Warehouse',
+          'header' : ['name',' | ','warehouseno'],
+          'body' : ['location'],
+          'value' : ['warehouseno']
+        }
+      },
+      {
+        'fieldName' : 'warehouseArea',
+        'fieldLabel' : {
+          'default' : '库位 :',
+          'eng' : 'Area :',
+          'chs' : '库位 :'
+        },
+        'placeholder' : {
+          'default' : '请输入库位 例如 ：A01',
+          'eng' : 'Please Type Warehouse Area #, for Example "A01"',
+          'chs' : '请输入库位 例如 ：A01'
+        },
+        'fieldType' : 'text-search',
+        'required' : true,
+        'readonly' : true,
+        'optionsConfig' :{
+          'objType' : 'WarehouseArea',
+          'header' : ['warehouseArea'],
+          'value' : ['warehouseArea']
+         }
+      },{
+        'fieldName' : 'productno',
+        'fieldLabel' : {
+          'default' : '代码 :',
+          'eng' : 'Product # :',
+          'chs' : '代码:'
+        },
+        'placeholder' : {
+          'default' : '请输入要添加的型号 例如 ：FS90823',
+          'eng' : 'Please Type the Product #, for Example "FS90823"',
+          'chs' : '请输入要添加的型号 例如 ：FS90823'
+        },
+        'fieldType' : 'text-search',
+        'required' : true,
+        'readonly' : true,
+        'optionsConfig' : {
+          'objType' : 'Product',
+          'header' : ['productno'],
+          'body' : ['brandName',' | ','size',' | ','feature'],
+          'value' : ['productno']
+        }
+      },
+      {
+        'fieldName' : 'brandName',
+        'fieldLabel' : {
+          'default' : '品牌名称 :',
+          'eng' : 'Brand Name :',
+          'chs' : '品牌名称:'
+        },
+        'placeholder' : {
+          'default' : '请输入品牌的英文名称 例如 ：Goodyear',
+          'eng' : 'Please Type the English Brand Name, for Example "Goodyear"',
+          'chs' : '请输入品牌的英文名称 例如 ： Goodyear'
+        },
+        'fieldType' : 'text',
+        'required' : true,
+        'readonly' : true
+      },
+      {
+          'fieldName' : 'period',
+          'fieldLabel' : {
+            'default' : '周期 :',
+            'eng' : 'Period :',
+            'chs' : '周期:'
+          },
+          'placeholder' : {
+            'default' : '请输入周期 例如 ：1602',
+            'eng' : 'Please Type Period, for Example "1602"',
+            'chs' : '请输入周期 例如 ：1602'
+          },
+          'fieldType' : 'text',
+          'required' : true,
+          'readonly' : true
       },
       {
         'fieldName' : 'amount',

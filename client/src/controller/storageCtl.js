@@ -1,7 +1,7 @@
 'use strict'
 import getForms from '../config/storageForm';
 
-export default function storageCtl(FormFieldService,ObjectService,$stateParams,$scope){
+export default function storageCtl(FormFieldService,ObjectService,$location,$stateParams,$scope){
   /*
   * forms should be some value from service instead of hard code
   */
@@ -58,7 +58,6 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
 
         object.$update([],()=>{
           alert('进/出库单已经提交');
-          console.log(object);
           $scope.addRecord();
         },
         () => {
@@ -72,8 +71,10 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
     let record = {};
 
     record.data = {
+      'recordId' : $scope.formData['storageId']
+                    + (Math.random()+Date.now()),
       'storageId' : $scope.formData['storageId'],
-      'operation' : (formType == 'increase') ? '+' : '-',
+      'operation' : (formType == 'increase') ? '进库' : '出库',
       'amount' : $scope.formData['amount'],
       'updatedTime' : Date.now(),
       'warehouseno' : $scope.formData['warehouseno'],
@@ -83,6 +84,8 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
     record.objType = 'StorageRecord';
 
     ObjectService.addNew(record);
+
+    $scope.redirectToRecordSummaryPage(record);
   }
 /*
 * Re Caculate storageId when fields Change
@@ -125,7 +128,7 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
 
     let storageIdField = $scope.fields[0];
     let formula = [1,2,3,5];
-    let delimiter = '/';
+    let delimiter = '_';
     let storageId = $scope.fields[formula[0]].value;
     for(let i=1 ; i< formula.length; i++){
       storageId = storageId + delimiter + $scope.fields[formula[i]].value;
@@ -139,5 +142,12 @@ export default function storageCtl(FormFieldService,ObjectService,$stateParams,$
     for(let i in fields){
       formData[fields[i].fieldName] = fields[i].value;
     }
+  };
+
+  $scope.redirectToRecordSummaryPage = (record) => {
+    console.log($location.path());
+    console.log('abc');
+    console.log('hyperion/summary/storageRecordSummary/'+record.data.recordId);
+    $location.path('hyperion/summary/storageRecordSummary/'+record.data.recordId);
   };
 }
