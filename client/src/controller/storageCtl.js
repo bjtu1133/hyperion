@@ -69,12 +69,14 @@ export default function storageCtl(FormFieldService,ObjectService,$location,$sta
 
   $scope.addRecord = () => {
     let record = {};
-
+    console.log($scope.formData['from'])
     record.data = {
       'recordId' : $scope.formData['storageId']
                     + (Math.random()+Date.now()),
       'storageId' : $scope.formData['storageId'],
       'operation' : (formType == 'increase') ? '进库' : '出库',
+      'from' : (formType == 'increase') ? $scope.formData['from'] : '',
+      'to' : (formType == 'increase') ? '' : $scope.formData['to'],
       'amount' : $scope.formData['amount'],
       'updatedTime' : Date.now(),
       'warehouseno' : $scope.formData['warehouseno'],
