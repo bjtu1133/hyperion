@@ -84,6 +84,24 @@ let views = {
       ]
     },
     {
+      'fieldName' : 'from',
+      'fieldLabel' : {
+        'default' : '货源 :',
+        'eng' : 'From :',
+        'chs' : '货源 :'
+      },
+      'fieldType' : 'property'
+    },
+    {
+      'fieldName' : 'to',
+      'fieldLabel' : {
+        'default' : '去向 :',
+        'eng' : 'to :',
+        'chs' : '去向 :'
+      },
+      'fieldType' : 'property'
+    },
+    {
       'fieldName' : 'amount',
       'fieldLabel' : {
         'default' : '数量 :',

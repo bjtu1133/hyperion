@@ -214,6 +214,77 @@ let forms = {
         'required' : true,
       },
       ]
+  },
+  'newMerchant' : {
+    'objType' : 'Merchant',
+    'idField' : 0,
+    'title' : {
+      'default' : '添加新的经销商',
+      'eng' : 'Add New Warehouse Area',
+      'chs' : '添加新的经销商'
+    },
+    'fields' : [
+      {
+        'fieldName' : 'merchantName',
+        'fieldLabel' : {
+          'default' : '名称 :',
+          'eng' : 'Name :',
+          'chs' : '名称 :'
+        },
+        'placeholder' : {
+          'default' : '请输入经销商名称 例如 ：沈阳施德',
+          'eng' : 'Please Type Warehouse Area #, for Example "A01"',
+          'chs' : '请输入经销商名称 例如 ：沈阳施德'
+        },
+        'fieldType' : 'text',
+        'required' : true,
+      },
+      {
+        'fieldName' : 'contactPerson',
+        'fieldLabel' : {
+          'default' : '联系人 :',
+          'eng' : 'Tel :',
+          'chs' : '联系人 :'
+        },
+        'placeholder' : {
+          'default' : '请输入经销商联系人 例如 张三',
+          'eng' : 'Please Type Warehouse Area #, for Example "A01"',
+          'chs' : '请输入经销商联系人 例如 张三'
+        },
+        'fieldType' : 'text',
+        'required' : true,
+      },
+      {
+        'fieldName' : 'merchantTel',
+        'fieldLabel' : {
+          'default' : '电话 :',
+          'eng' : 'Tel :',
+          'chs' : '电话 :'
+        },
+        'placeholder' : {
+          'default' : '请输入经销商电话 例如 024-7733XXXX',
+          'eng' : 'Please Type Warehouse Area #, for Example "A01"',
+          'chs' : '请输入经销商电话 例如 024-7733XXXX'
+        },
+        'fieldType' : 'text',
+        'required' : true,
+      },
+      {
+        'fieldName' : 'merchantAddr',
+        'fieldLabel' : {
+          'default' : '地址 :',
+          'eng' : 'Address :',
+          'chs' : '地址 :'
+        },
+        'placeholder' : {
+          'default' : '请输入经销商地址 例如 ：沈阳施德',
+          'eng' : 'Please Type Warehouse Area #, for Example "A01"',
+          'chs' : '请输入经销商地址 例如 ：抚顺市经济开发区'
+        },
+        'fieldType' : 'textarea',
+        'required' : true,
+      },
+      ]
   }
 };
 

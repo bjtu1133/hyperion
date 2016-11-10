@@ -1,6 +1,7 @@
 
 import fieldService from './form/fieldService';
 import viewService from './viewService';
+import hyperionService from './hyperionService';
 
 export default function service($resource){
 
@@ -32,4 +33,5 @@ export default function service($resource){
 
   fieldService('hyperion');
   viewService('hyperion');
+  hyperionService('hyperion');
 }

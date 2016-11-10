@@ -121,6 +121,26 @@ let forms = {
           'required' : true
       },
       {
+          'fieldName' : 'from',
+          'fieldLabel' : {
+            'default' : '货源 :',
+            'eng' : 'From :',
+            'chs' : '货源:'
+          },
+          'placeholder' : {
+            'default' : '请输入货源 例如 ：沈阳施德',
+            'eng' : 'Please Type Where the storage come from, for Example "1602"',
+            'chs' : '请输入货源 例如 ：沈阳施德'
+          },
+          'fieldType' : 'text-search',
+          'required' : true,
+          'optionsConfig' : {
+            'objType' : 'Merchant',
+            'header' : ['merchantName'],
+            'value' : ['merchantName']
+          }
+      },
+      {
           'fieldName' : 'amount',
           'fieldLabel' : {
             'default' : '数量 :',
@@ -274,6 +294,26 @@ let forms = {
           'fieldType' : 'text',
           'required' : true,
           'readonly' : true
+      },
+      {
+          'fieldName' : 'to',
+          'fieldLabel' : {
+            'default' : '去向 :',
+            'eng' : 'To :',
+            'chs' : '去向:'
+          },
+          'placeholder' : {
+            'default' : '请输入去向 例如 ：沈阳施德',
+            'eng' : 'Please Type Where the storage come from, for Example "1602"',
+            'chs' : '请输入去向 例如 ：沈阳施德'
+          },
+          'fieldType' : 'text-search',
+          'required' : true,
+          'optionsConfig' : {
+            'objType' : 'Merchant',
+            'header' : ['merchantName'],
+            'value' : ['merchantName']
+          }
       },
       {
         'fieldName' : 'amount',
