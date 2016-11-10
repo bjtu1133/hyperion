@@ -145,9 +145,6 @@ export default function storageCtl(FormFieldService,ObjectService,$location,$sta
   };
 
   $scope.redirectToRecordSummaryPage = (record) => {
-    console.log($location.path());
-    console.log('abc');
-    console.log('hyperion/summary/storageRecordSummary/'+record.data.recordId);
     $location.path('hyperion/summary/storageRecordSummary/'+record.data.recordId);
   };
 }

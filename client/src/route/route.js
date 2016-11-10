@@ -8,7 +8,8 @@ export default function route (moduleName){
 
     $stateProvider.state('hyperion',{
       url : '/hyperion',
-      templateUrl: './src/template/hyperion/index.html'
+      templateUrl: './src/template/hyperion/index.html',
+      controller : 'hyperionCtl'
     });
 
     $stateProvider.state('hyperion.addNew',{
