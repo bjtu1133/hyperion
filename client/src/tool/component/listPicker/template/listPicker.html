@@ -1,0 +1,11 @@
+
+  <div class="panel panel-primary ">
+    <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel">
+      选择库存
+    </div>
+    <div class="panel-body collapse-panel collapse in">
+      <list-picker-filter-panel attr="$ctrl.filterAttr" store="$ctrl.query" on-filter="$ctrl.onFilter($ctrl.query)">
+      </list-picker-filter-panel>
+      <list-picker-selection-panel></list-picker-selection-panel>
+    </div>
+  </div>

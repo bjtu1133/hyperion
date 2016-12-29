@@ -117,7 +117,7 @@ let forms = {
             'eng' : 'Please Type Period, for Example "1602"',
             'chs' : '请输入周期 例如 ：1602'
           },
-          'fieldType' : 'text',
+          'fieldType' : 'number',
           'required' : true
       },
       {
@@ -291,7 +291,7 @@ let forms = {
             'eng' : 'Please Type Period, for Example "1602"',
             'chs' : '请输入周期 例如 ：1602'
           },
-          'fieldType' : 'text',
+          'fieldType' : 'number',
           'required' : true,
           'readonly' : true
       },

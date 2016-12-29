@@ -35,5 +35,16 @@ export default function route (moduleName){
       templateUrl : './src/template/view/summary.html',
       controller : 'summaryCtl'
     });
+
+    $stateProvider.state('hyperion.decStorage',{
+      url : '/decStorage',
+      templateUrl : './src/template/form/decStorage.html',
+      controller : 'baseCtl',
+      resolve : {
+        data : function(ViewDefService){
+          return ViewDefService.get({'viewName':'decStorageApp'});
+        }
+      }
+    });
   });
 }

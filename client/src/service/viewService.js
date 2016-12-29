@@ -1,6 +1,6 @@
 'use strict'
 
-export default function viewService(moduleName){
+export default function viewService(moduleName,$resource){
 
   let factory = angular.module(moduleName).factory;
 
@@ -40,6 +40,23 @@ export default function viewService(moduleName){
       }
     }
   }]);
+
+  factory('ViewDefService',($resource) => {
+    return $resource('/view/getViewDef/:viewName',null,{
+      'get' : {method:'GET',isArray:false}
+    });
+  });
+  factory('ViewDefLoacalStorage',function(){
+    this.store = {};
+    return {
+      set : (key,value)=>{
+        this.store[key] = value;
+      },
+      get : (key) => {
+        return this.store[key];
+      }
+    }
+  });
 
   console.log('Store Service Loaded');
 }

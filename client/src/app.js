@@ -6,10 +6,12 @@ import 'angular-filter';
 import route from './route/route';
 import service from './service/service';
 import controller from './controller/controller';
+import component from './tool/component'
 
 import filter from './filter/filter.js';
 angular.module('hyperion',['ui.router','ngResource','angular.filter']);
 service('hyperion');
+component('hyperion');
 controller('hyperion');
 route('hyperion');
 filter('hyperion');

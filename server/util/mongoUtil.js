@@ -18,14 +18,15 @@ module.exports = {
   getCollection(collectionName){
     return _db.collection(collectionName);
   },
- /*
- * Sample code
- */
-  tires() {
-    return _db.collection("tires");
-  },
-
-  brands() {
-    return _db.collection("testBrand")
+  buildQuery(data){
+    let query = {};
+    for(let key in data){
+      if(!data[key]||!data[key].fieldName){
+        continue;
+      }else if(data[key].fieldType == "range"){
+        
+      }
+    }
+    return query;
   }
 }
