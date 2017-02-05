@@ -1,0 +1,153 @@
+db.Tire.insert([
+  {
+    itemCode:'2356600',
+    name:'倍耐力轮胎',
+    brand:'倍耐力',
+    size:'255/50R17',
+    model:'94Q r-f WiceA',
+    spec:'轿车轮胎',
+    inBag:true,
+    ChargeStorageFee:true},
+  {
+    itemCode:'2479600',
+    name:'倍耐力轮胎',
+    brand:'倍耐力',
+    size:'255/45R18',
+    model:'100V XL r-f',
+    spec:'轿车轮胎',
+    inBag:true,
+    ChargeStorageFee:true},
+  {
+    itemCode:'2322400',
+    name:'倍耐力轮胎',
+    brand:'倍耐力',
+    size:'255/50R20',
+    model:'112V XL S-',
+    spec:'轿车轮胎',
+    inBag:true,
+    ChargeStorageFee:true},
+  {
+    itemCode:'1928500',
+    name:'倍耐力轮胎',
+    brand:'倍耐力',
+    size:'255/50R19',
+    model:'99H W210s2',
+    spec:'轿车轮胎',
+    inBag:true,
+    ChargeStorageFee:true},
+  {
+    itemCode:'2050100',
+    name:'倍耐力轮胎',
+    brand:'倍耐力',
+    size:'315/35R20',
+    model:'110V W240s2',
+    spec:'轿车轮胎',
+    inBag:true,
+    ChargeStorageFee:true},
+  {
+    itemCode:'1877000',
+    name:'倍耐力轮胎',
+    brand:'倍耐力',
+    size:'255/50R17',
+    model:'94H r-f',
+    spec:'轿车轮胎',
+    inBag:true,
+    ChargeStorageFee:true}
+])
+
+db.StorageBin.insert([
+  {
+    id:"SY1_E1_1",
+    warehouse:"SY1",
+    area:"SY1_E1",
+    distance : 1,
+    itemCode : "1877000",
+    capacity : 200,
+    empty : true,
+    amount : 143,
+    storageDetail:{},
+    scheduled : 24,
+    scheduleDetail:{}
+  },
+  {
+    id:"SY1_E1_2",
+    warehouse:"SY1",
+    area:"SY1_E1",
+    distance : 2,
+    itemCode : "1877000",
+    capacity : 200,
+    empty : true,
+    amount : 143,
+    storageDetail:{},
+    scheduled : 24,
+    scheduleDetail:{}
+  },
+  {
+    id:"SY1_E1_3",
+    warehouse:"SY1",
+    area:"SY1_E1",
+    distance : 3,
+    itemCode : "1877000",
+    capacity : 200,
+    empty : true,
+    amount : 143,
+    storageDetail:{},
+    scheduled : 24,
+    scheduleDetail:{}
+  },
+  {
+    id:"SY1_W1_1",
+    warehouse:"SY1",
+    area:"SY1_W1",
+    distance : 2,
+    itemCode : "",
+    capacity : 0,
+    amount : 0,
+    empty : true
+  },
+  {
+    id:"SY1_W1_2",
+    warehouse:"SY1",
+    area:"SY1_W1",
+    distance : 3,
+    itemCode : "",
+    capacity : 0,
+    amount : 0,
+    empty : true
+  },
+  {
+    id:"SY1_W1_3",
+    warehouse:"SY1",
+    area:"SY1_W1",
+    distance : 4,
+    itemCode : "",
+    capacity : 0,
+    amount : 0,
+    empty : true
+  }
+])
+
+db.StorageArea.insert([
+  {
+    id:"SY1_E1",
+    warehouse:"SY1",
+    storageBin:["SY1_E1_1","SY1_E1_2","SY1_E1_3"],
+  },
+  {
+    id:"SY1_W1",
+    warehouse:"SY1",
+    storageBin:["SY1_W1_1","SY1_W1_2","SY1_W1_3"],
+  }
+])
+
+db.Warehouse.insert(
+  {
+    id:"SY1"
+    name:"沈阳仓库",
+    area:[],
+    storageBinList : [],
+    address:"抚顺市理石经济开发区",
+    phone:"02474451233",
+    contactPerson:"胡玉珠"
+  }
+)

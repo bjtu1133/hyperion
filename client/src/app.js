@@ -8,7 +8,7 @@ import service from './service/service';
 import controller from './controller/controller';
 import component from './tool/component'
 
-import filter from './filter/filter.js';
+import filter from './filter/filter';
 angular.module('hyperion',['ui.router','ngResource','angular.filter']);
 service('hyperion');
 component('hyperion');

@@ -1,0 +1,18 @@
+<div class="col-lg-8">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      库存列表
+    </div>
+    <div class="panel-body">
+      <div class="list-group">
+        <div ng-repeat="listItem in list | exclude:selectedItemIds:idField | numOfItems : numOfItems">
+          <a  href="#" class="list-group-item" ng-click="select(listItem)">
+            <h4 class="list-group-item-heading" ng-bind="printLabel(listItem,optionCfg.title)">
+            </h4>
+            <p class="list-group-item-text" ng-bind="printLabel(listItem,optionCfg.body)"></p>
+          </a>
+        <div>
+      </div>
+    </div>
+  </div>
+</div>

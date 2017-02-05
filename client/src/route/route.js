@@ -4,7 +4,7 @@ export default function route (moduleName){
   let app = angular.module(moduleName)
   app.config(($stateProvider,$urlRouterProvider)=>{
 
-    $urlRouterProvider.otherwise('hyperion');
+    $urlRouterProvider.otherwise('hyperion/inboundApp');
 
     $stateProvider.state('hyperion',{
       url : '/hyperion',
@@ -43,6 +43,16 @@ export default function route (moduleName){
       resolve : {
         data : function(ViewDefService){
           return ViewDefService.get({'viewName':'decStorageApp'});
+        }
+      }
+    });
+    $stateProvider.state('hyperion.inboundApp',{
+      url : '/inboundApp',
+      templateUrl : './src/template/app/inbound-app.html',
+      controller : 'baseCtl',
+      resolve : {
+        data : function(ViewDefService){
+          return ViewDefService.get({'viewName':'inboundApp'});
         }
       }
     });

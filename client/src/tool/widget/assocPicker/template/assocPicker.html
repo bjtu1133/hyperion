@@ -1,0 +1,8 @@
+<filter-panel field-def="$ctrl.filterFiledDef"
+              on-filter="$ctrl.onFilter()"
+              options="$ctrl.optionsStore"></filter-panel>
+<options-panel field-def="$ctrl.optionsFiledDef"
+              options="$ctrl.optionsStore"
+              selected-item-ids="$ctrl.selectedItemIds"
+              selected-items="$ctrl.selectedItems"
+              on-selected="$ctrl.onSelected()"></options-panel>

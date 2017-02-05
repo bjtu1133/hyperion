@@ -1,0 +1,95 @@
+<div ng-show="!complete">
+  <form ng-submit="addInboundNumByDotDetail()" id="scheduleNumByDotForm">
+    <div class="row">
+        <input-form field-def="$ctrl.fieldDef" input-object="$ctrl.scheduleNumByDotDetail"></input-form>
+        <div class="well-sm button-group">
+          <button type= "submit" class="btn btn-primary">确定</button>
+        </div>
+    </div>
+  </form>
+  <div class="row">
+      <table class="table table-striped small">
+        <tr ng-show="scheduleNumByDotReady()">
+          <th>周期</th>
+          <th>计划数量</th>
+          <th ng-show="showRecommandations">计划剩余</th>
+          <th>
+            <button ng-click="storageBinRecommandation()"
+                    class="btn btn-info btn-sm">查找库位</button>
+          </th>
+        </tr>
+        <tr ng-repeat="(key,value) in scheduleNumByDot">
+          <td>{{key}}</td>
+          <td>{{value.scheduleAmount}}</td>
+          <td ng-show="showRecommandations">{{value.scheduleRemain}}</td>
+          <td>
+            <button ng-click="removeItem(scheduleNumByDot,key)"
+                    class="btn btn-danger btn-xs">删除</button>
+          </td>
+        </tr>
+      </table>
+  </div>
+  <div class="row" ng-show="showRecommandations">
+      <table class="table table-striped table-responsive small">
+        <tr>
+          <th>库位编号</th>
+          <th>可用容量</th>
+          <th>周期</th>
+          <th>数量</th>
+        </tr>
+        <tr ng-repeat="storageBin in storageBinList">
+          <td>{{storageBin.id}}</td>
+          <td>
+            <p>123</p>
+          </td>
+          <td class="col-xs-4 col-md-2">
+            <select class="form-control input-sm"
+              ng-model = "storageBin.dot">
+              <option ng-repeat="(key,value) in scheduleNumByDot">{{key}}</option>
+            </select>
+          </td>
+          <td class="col-xs-4 col-md-2">
+            <input class="form-control input-sm" type="number"
+              ng-model="storageBin.scheduleAmount"/>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <th class = "col-xs-2 col-md-1"><th>
+            <button ng-click="autoSelectStorageBin()"
+                    class="btn btn-info btn-sm">自动分配</button></th>
+            <th>
+            <button ng-click="completeInboundItems()"
+                    class="btn btn-info btn-sm">提交入库计划</button></th>
+          </th>
+        </th></th>
+        </tr>
+      </table>
+  </div>
+</div>
+<div ng-show="complete">
+  <table class="table table-striped table-responsive small">
+    <tr>
+      <th>轮胎代码</th>
+      <th>品牌</th>
+      <th>库位</th>
+      <th>周期</th>
+      <th>数量</th>
+    </tr>
+    <tr ng-repeat="item in itemList">
+      <td>{{item.itemCode}}</td>
+      <td>{{item.brand}}</td>
+      <td>{{item.storageBinId}}</td>
+      <td>{{item.dot}}</td>
+      <td>{{item.amount}}</td>
+    <tr>
+        <th></th>
+        <th class = "col-xs-2 col-md-1">
+          <button ng-click="reset()"
+                  class="btn btn-info btn-sm">删除</button></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+  </table>
+</div>

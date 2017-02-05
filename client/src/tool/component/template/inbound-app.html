@@ -1,0 +1,61 @@
+<div class="panel panel-primary ">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel1">
+    第一步 ： {{$ctrl.generalInfoFieldDef.label}}
+  </div>
+  <div class="collapse-panel1 panel-body collapse in">
+    <input-form field-def="$ctrl.generalInfoFieldDef"></input-form>
+  </div>
+</div>
+<div class="panel panel-primary ">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel2">
+    第二步 ： {{$ctrl.itemPickerFieldDef.label}}
+  </div>
+  <div class="panel-body collapse-panel2 collapse">
+    <assoc-picker field-def="$ctrl.itemPickerFieldDef"
+                  selected-item-ids="inboundTireIds"
+                  selected-items="inboundTires"></assoc-picker>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel3">
+    第三步 ：{{$ctrl.storageBinPickerFieldDef.label}}
+  </div>
+  <div class="panel-body collapse-panel3 collapse">
+    <h5 ng-show="inboundTires.length==0">
+      列表为空
+    </h5>
+    <div ng-repeat = "tire in inboundTires">
+      <div class="panel panel-primary ">
+        <div class="panel-heading">
+          轮胎代码 ： {{tire.itemCode}}
+        </div>
+        <div class="panel-body">
+          <div class="collapse-panel1 panel-body">
+            <storage-bin-selector field-def="$ctrl.storageBinPickerFieldDef"
+                                  inbound-item-info = "tire"
+                                  on-complete = "$ctrl.addInboundItems()"
+                                  inbound-items = "$ctrl.inboundItems">
+            </storage-bin-selector>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-primary ">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel">
+    第四步 ：
+  </div>
+  <div class="panel-body collapse-panel collapse">
+
+  </div>
+</div>
+
+<div class="panel panel-primary ">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel">
+    入库单
+  </div>
+  <div class="panel-body collapse">
+
+  </div>
+</div>
