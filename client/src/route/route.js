@@ -4,7 +4,7 @@ export default function route (moduleName){
   let app = angular.module(moduleName)
   app.config(($stateProvider,$urlRouterProvider)=>{
 
-    $urlRouterProvider.otherwise('hyperion/inboundApp');
+    $urlRouterProvider.otherwise('hyperion/inboundScheduleApp');
 
     $stateProvider.state('hyperion',{
       url : '/hyperion',
@@ -46,13 +46,13 @@ export default function route (moduleName){
         }
       }
     });
-    $stateProvider.state('hyperion.inboundApp',{
-      url : '/inboundApp',
-      templateUrl : './src/template/app/inbound-app.html',
+    $stateProvider.state('hyperion.inboundScheduleApp',{
+      url : '/inboundScheduleApp',
+      templateUrl : './src/template/app/inbound-schedule-app.html',
       controller : 'baseCtl',
       resolve : {
         data : function(ViewDefService){
-          return ViewDefService.get({'viewName':'inboundApp'});
+          return ViewDefService.get({'viewName':'inboundScheduleApp'});
         }
       }
     });

@@ -2,17 +2,12 @@
 import decStorageApp from './component/decStorageApp';
 import listPicker from './component/listPicker/listPicker';
 import widget from './widget/widget'
-import inboundApp from './component/inboundApp';
+import inboundScheduleApp from './component/inboundScheduleApp';
 
 export default function(moduleName){
 
   listPicker(moduleName);
   decStorageApp(moduleName);
   widget(moduleName);
-  inboundApp(moduleName);
-}
-
-
-function PanelCtl(){
-  console.log('panel');
+  inboundScheduleApp(moduleName);
 }

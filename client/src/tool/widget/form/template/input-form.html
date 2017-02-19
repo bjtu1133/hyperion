@@ -21,13 +21,15 @@
           <span class="input-group-addon">{{field.label}}</span>
           <input class="form-control" type="date"
             ng-model="field.value"
-            ng-readonly="field.readonly"/>
+            ng-readonly="field.readonly"
+            ng-change="onFieldChange(field)"/>
         </div>
         <div ng-if="field.type=='boolean'" class="input-group well-sm">
           <span class="input-group-addon">{{field.label}}</span>
           <div class="form-control">
             <input type="checkbox"
               ng-model="field.value"
+              ng-change="onBooleanFieldChange(field)"
               ng-readonly="field.readonly"/>
           </div>
         </div>

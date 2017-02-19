@@ -3,7 +3,10 @@
     第一步 ： {{$ctrl.generalInfoFieldDef.label}}
   </div>
   <div class="collapse-panel1 panel-body collapse in">
-    <input-form field-def="$ctrl.generalInfoFieldDef"></input-form>
+    <input-form field-def="$ctrl.generalInfoFieldDef"
+                input-object = "$ctrl.generalInfoObject"
+                on-update="$ctrl.onGeneralInfoUpdate()">
+    </input-form>
   </div>
 </div>
 <div class="panel panel-primary ">
@@ -44,18 +47,24 @@
 </div>
 <div class="panel panel-primary ">
   <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel">
-    第四步 ：
+    第四步 ： {{$ctrl.reviewPaneFieldDef.label}}
   </div>
   <div class="panel-body collapse-panel collapse">
-
-  </div>
-</div>
-
-<div class="panel panel-primary ">
-  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel">
-    入库单
-  </div>
-  <div class="panel-body collapse">
-
+    <h4>入库计划单</h4>
+    <button ng-click = "createInboundSchedule()"
+            class="btn btn-xs btn-info pull-right">打印入库计划单</button>
+    <button ng-click = "createInboundSchedule()"
+            class="btn btn-xs btn-info pull-right">完成入库计划</button>
+    <info-table field-def="$ctrl.reviewPaneFieldDef.generalInfo"
+                data="$ctrl.reviewGeneralInfoObject"></info-table>
+    <div ng-repeat="(itemCode,itemList) in inboundItems">
+      <h5>轮胎代码 ： {{itemCode}}</h5>
+      <list-table field-def="$ctrl.reviewPaneFieldDef.itemList"
+                  item-list="itemList"></list-table>
+    </div>
+    <button ng-click = "createInboundSchedule()"
+            class="btn btn-sm btn-info">打印入库计划单</button>
+    <button ng-click = "createInboundSchedule()"
+            class="btn btn-sm btn-info">完成入库计划</button>
   </div>
 </div>

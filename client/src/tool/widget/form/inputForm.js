@@ -7,13 +7,14 @@ export default function(moduleName){
     controller: inputFormCtl,
     bindings:{
       fieldDef : '<',
-      inputObject : '='
+      inputObject : '=',
+      onUpdate : '&'
     }
   });
 }
 function inputFormCtl($scope){
   let ctrl = this;
-  //console.log(ctrl);
+
   if (!ctrl.fieldDef || !ctrl.fieldDef.fields){
     console.log('field def error');
     return;
@@ -28,7 +29,13 @@ function inputFormCtl($scope){
     if(field.value){
       ctrl.inputObject[field.name] = field.value;
     }
-  }
+    if(ctrl.onUpdate) {ctrl.onUpdate();}
+  };
+
+  $scope.onBooleanFieldChange = (field) => {
+    ctrl.inputObject[field.name] = field.value;
+    if(ctrl.onUpdate) {ctrl.onUpdate();}
+  };
 
   //console.log(ctrl);
 }

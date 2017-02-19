@@ -1,6 +1,6 @@
 "use strict"
-let inboundApp = {
-  "viewName" : "inboundApp",
+let inboundScheduleApp = {
+  "viewName" : "inboundScheduleApp",
   "components" : {
     "generalInfo":{
       "name":"generalInfo",
@@ -9,7 +9,7 @@ let inboundApp = {
       "fields":{
         "inboundId":{
           "name":"inboundId",
-          "label" : "出库单号",
+          "label" : "入库计划单号",
           "type" : "text",
           "readonly" : true
         },
@@ -101,11 +101,57 @@ let inboundApp = {
         }
       }
     },
-    "review":{
-      "type" : "reviewPane",
-      "label" : "预览"
+    "reviewPane":{
+      "name" : "reviewPane",
+      "label" : "入库计划单预览",
+      "generalInfo":{
+        "fields":[{
+            "name":"inboundId",
+            "label" : "入库单号",
+            "type" : "text"
+          },{
+            "name":"date",
+            "label" : "入库日期",
+            "type" : "date"
+          },{
+            "name":"ifChargeInboundFee",
+            "label" : "是否收入库费",
+            "type" : "boolean"
+          },{
+            "name":"operator",
+            "label" : "操作人",
+            "type" : "text"
+          },{
+            "name":"provider",
+            "label" : "供应商",
+            "type" : "text"
+          },{
+            "name":"requestNO",
+            "label" : "客户单号",
+            "type" : "text"
+          }
+        ]
+      },
+      "itemList" : {
+        "columns" : [{
+            "name":"brand",
+            "label" : "品牌",
+          },{
+              "name":"storageBinId",
+              "label" : "库位号",
+          },{
+              "name":"dot",
+              "label" : "周期",
+          },{
+              "name":"amount",
+              "label" : "计划数量",
+          },{
+              "name" : "actual",
+              "label" : "实际数量",
+          }
+        ]
+      }
     }
-
   }
 }
-module.exports = inboundApp;
+module.exports = inboundScheduleApp;

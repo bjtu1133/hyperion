@@ -1,0 +1,22 @@
+<table class="table table-striped table-responsive small">
+  <tr ng-repeat = "field in fields">
+    <th>
+      {{field.label}}
+    </th>
+    <td>
+      <div ng-if="field.type=='text'">
+        {{data[field.name]}}{{data.inboundId}}
+      </div>
+      <div ng-if="field.type=='date'">
+        {{parseDate(data[field.name])}}
+      </div>
+      <div ng-if="field.type=='boolean' && data[field.name]">
+        是
+      </div>
+      <div ng-if="field.type=='boolean' && !data[field.name]">
+        否
+      </div>
+    </td>
+    <td></td>
+  </tr>
+</table>

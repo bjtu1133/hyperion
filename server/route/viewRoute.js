@@ -11,6 +11,7 @@ viewRoute.get('/getViewDef/:viewName',(req,res)=>{
 
   try{
     viewDef = require("../config/viewDef/"+viewName);
+    console.log(viewDef);
   }catch(err){
     errors.push(err);
   }

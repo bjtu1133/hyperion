@@ -30,6 +30,15 @@ export default function service($resource){
     });
   });
 
+  /*
+  * Service for Inbound, Outbound,Create Schedule
+  */
+  module.factory('StorageService',($resource) => {
+    return $resource('/storage',null,{
+      'createSchedule' : {method : 'POST', isArray : false, url:'/inbound/schedule/create'},
+    });
+  });
+
   fieldService('hyperion');
   viewService('hyperion');
   hyperionService('hyperion');
