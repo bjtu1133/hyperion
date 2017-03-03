@@ -23,8 +23,8 @@ let inboundScheduleApp = {
           "label" : "是否收入库费",
           "type" : "boolean",
         },
-        "operator":{
-          "name":"operator",
+        "scheduleOperator":{
+          "name":"scheduleOperator",
           "label" : "操作人",
           "type" : "text",
         },

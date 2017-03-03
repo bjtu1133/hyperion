@@ -12,10 +12,8 @@ export default function(moduleName){
   });
 }
 function infoTableCtl($scope){
-  //build rows
+  //console.log(this);
   let ctrl = this;
-
-  $scope.fields = ctrl.fieldDef.fields;
 
   this.$onChanges = ()=>{
     $scope.data = ctrl.data;
@@ -25,5 +23,4 @@ function infoTableCtl($scope){
     if(date)
       return new Date(date).toLocaleDateString();
   };
-  console.log(ctrl);
 }

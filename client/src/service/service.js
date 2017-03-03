@@ -36,6 +36,7 @@ export default function service($resource){
   module.factory('StorageService',($resource) => {
     return $resource('/storage',null,{
       'createSchedule' : {method : 'POST', isArray : false, url:'/inbound/schedule/create'},
+      'createInbound' : {method : 'POST', isArray : false, url:'/inbound/create'},
     });
   });
 

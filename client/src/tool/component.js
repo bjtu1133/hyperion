@@ -3,6 +3,7 @@ import decStorageApp from './component/decStorageApp';
 import listPicker from './component/listPicker/listPicker';
 import widget from './widget/widget'
 import inboundScheduleApp from './component/inboundScheduleApp';
+import inboundApp from './component/inboundApp';
 
 export default function(moduleName){
 
@@ -10,4 +11,5 @@ export default function(moduleName){
   decStorageApp(moduleName);
   widget(moduleName);
   inboundScheduleApp(moduleName);
+  inboundApp(moduleName);
 }

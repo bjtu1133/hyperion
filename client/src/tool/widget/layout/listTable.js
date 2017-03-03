@@ -18,5 +18,5 @@ function listTableCtl($scope){
   this.$onChanges = ()=>{
     $scope.itemList = ctrl.itemList;
   }
-  console.log(ctrl);
+  //console.log(ctrl);
 }

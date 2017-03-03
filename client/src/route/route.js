@@ -4,12 +4,23 @@ export default function route (moduleName){
   let app = angular.module(moduleName)
   app.config(($stateProvider,$urlRouterProvider)=>{
 
-    $urlRouterProvider.otherwise('hyperion/inboundScheduleApp');
+    $urlRouterProvider.otherwise('hyperion/inboundApp');
 
     $stateProvider.state('hyperion',{
       url : '/hyperion',
       templateUrl: './src/template/hyperion/index.html',
       controller : 'hyperionCtl'
+    });
+
+    $stateProvider.state('hyperion.home',{
+      url : '/home',
+      templateUrl : './src/template/hyperion/home.html',
+      controller : 'baseCtl',
+      resolve : {
+        data : function(ViewDefService){
+          return ViewDefService.get({'viewName':'homePage'});
+        }
+      }
     });
 
     $stateProvider.state('hyperion.addNew',{
@@ -53,6 +64,17 @@ export default function route (moduleName){
       resolve : {
         data : function(ViewDefService){
           return ViewDefService.get({'viewName':'inboundScheduleApp'});
+        }
+      }
+    });
+    $stateProvider.state('hyperion.inboundApp',{
+      url : '/inboundApp',
+      params : {inboundId : null},
+      templateUrl : './src/template/app/inbound-app.html',
+      controller : 'baseCtl',
+      resolve : {
+        data : function(ViewDefService){
+          return ViewDefService.get({'viewName':'inboundApp'});
         }
       }
     });

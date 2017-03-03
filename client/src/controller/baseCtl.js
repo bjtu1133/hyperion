@@ -1,7 +1,8 @@
 'use strict'
 
-export default function baseCtl(data,$scope){
+export default function baseCtl(data,$scope,$stateParams){
   $scope.data = data;
-  console.log(data.viewName);
-  console.log('baseCtl');
+  $scope.params = $stateParams;
+  //console.log('baseCtl');
+  //console.log($stateParams);
 }

@@ -1,0 +1,11 @@
+<div  class="panel panel-primary">
+  <div class="panel-heading">
+    {{fieldDef.label}}
+  </div>
+  <div class="panel-body">
+    <input-form field-def="$ctrl.fieldDef"
+                input-object = "$ctrl.inputObject">
+    </input-form>
+    <button class="btn btn-primary pull-right" ng-click="submit()">提交</button>
+  </div>
+</div>

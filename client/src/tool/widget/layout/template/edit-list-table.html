@@ -1,0 +1,30 @@
+
+<edit-table-row ng-if="addNewItemRowVisible"
+            field-def="$ctrl.fieldDef.newItemRow"
+            item = "$ctrl.newItem"
+            on-submit = "$ctrl.addNewItem()"></edit-table-row>
+
+<button ng-if="!addNewItemRowVisible"
+        class="btn btn-primary btn-xs"
+        ng-click="showAddNewItemRow()">添加新的记录</button>
+
+<table class="table table-striped table-responsive small">
+  <tr ng-if="showHeader">
+    <th ng-repeat="column in columns">{{column.label}}</th>
+  </tr>
+  <tr ng-repeat="item in itemList">
+    <td ng-repeat = "colum in columns">
+      <div ng-if = "colum.type == 'text'">
+        {{item[colum.name]}}
+      </div>
+      <div ng-if = "colum.type == 'input_number'">
+        <input type="number" ng-model="item[colum.name]" />
+      </div>
+      <div ng-if = "colum.type == 'label'">
+        {{item.label}}
+      </div>
+    </td>
+  </tr>
+  <tr>
+  </tr>
+</table>

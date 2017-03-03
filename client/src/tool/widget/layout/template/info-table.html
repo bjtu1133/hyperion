@@ -1,11 +1,11 @@
 <table class="table table-striped table-responsive small">
-  <tr ng-repeat = "field in fields">
+  <tr ng-repeat = "field in $ctrl.fieldDef.fields">
     <th>
       {{field.label}}
     </th>
     <td>
-      <div ng-if="field.type=='text'">
-        {{data[field.name]}}{{data.inboundId}}
+      <div ng-if="field.type=='text' || field.type == 'textarea'">
+        {{data[field.name]}}
       </div>
       <div ng-if="field.type=='date'">
         {{parseDate(data[field.name])}}

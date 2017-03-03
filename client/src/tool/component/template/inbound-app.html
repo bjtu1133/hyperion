@@ -1,0 +1,83 @@
+<div  class="panel panel-primary ">
+  <div class="panel-heading">
+    {{$ctrl.fieldDef.label}}
+    <span class = "pull-right">
+      <button ng-if="mode == 'edit'"
+              ng-click = "review()"
+              class="btn btn-xs btn-info">完成入库</button>
+      <button ng-if="mode == 'review'"
+              ng-click = "edit()"
+              class="btn btn-xs btn-info">更改入库单</button>
+      <button ng-if="mode == 'review'"
+              ng-click = "submit()"
+              class="btn btn-xs btn-info">提交入库单</button>
+      <button ng-if="mode == 'review'"
+              ng-click = "print()"
+              class="btn btn-xs btn-info">打印入库单</button>
+    </span>
+  </div>
+
+  <div ng-if="mode=='edit'" class="panel-body collapse-panel">
+    <div  class="panel panel-primary ">
+      <div class="panel-body">
+        <input-form field-def="$ctrl.fieldDef.inboundInfo"
+                    input-object = "$ctrl.inboundInfo"></input-form>
+      </div>
+    </div>
+
+    <h5>
+      {{$ctrl.fieldDef.scheduleInfo.label}}
+    </h5>
+    <info-table field-def="$ctrl.fieldDef.scheduleInfo"
+                data="$ctrl.scheduleInfo"></info-table>
+
+    <div ng-repeat="(itemCode,itemList) in $ctrl.inboundItems">
+      <h5>
+        轮胎代码 ： {{itemCode}}
+      </h5>
+      <edit-list-table field-def="$ctrl.fieldDef.itemList"
+                  item-list="itemList"
+                  on-complete = ""></edit-list-table>
+    </div>
+
+    <div  class="panel panel-primary ">
+      <div class="panel-body">
+        <input-form field-def="$ctrl.fieldDef.comment"
+                    input-object = "$ctrl.inboundInfo"></input-form>
+      </div>
+    </div>
+    <button ng-click = "review()"
+            class="btn btn-sm btn-info pull-right">完成入库单</button>
+  </div>
+
+  <div ng-if="mode=='review'" class="panel-body collapse-panel">
+
+
+    <h5>
+      {{$ctrl.fieldDef.inboundInfo.label}}
+    </h5>
+    <info-table field-def="$ctrl.fieldDef.inboundInfo"
+                data="$ctrl.inboundInfo"></info-table>
+    <h5>
+      {{$ctrl.fieldDef.scheduleInfo.label}}
+    </h5>
+    <info-table field-def="$ctrl.fieldDef.scheduleInfo"
+                data="$ctrl.scheduleInfo"></info-table>
+    <div ng-repeat="(itemCode,itemList) in $ctrl.inboundItems">
+      <h5>
+        轮胎代码 ： {{itemCode}}
+      </h5>
+      <list-table field-def="$ctrl.fieldDef.itemList"
+                  item-list="itemList"></list-table>
+    </div>
+    
+    <info-table field-def="$ctrl.fieldDef.comment"
+                data="$ctrl.inboundInfo"></info-table>
+    <button ng-click = "edit()"
+            class="btn btn-sm btn-info">更改入库单</button>
+    <button ng-click = "submit()"
+            class="btn btn-sm btn-info">提交入库单</button>
+    <button ng-click = "print()"
+            class="btn btn-sm btn-info">打印入库单</button>
+  </div>
+</div>

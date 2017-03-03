@@ -36,6 +36,7 @@ objectRouter.get("/:objType/:idField/:idValue",jsonParser,(req,res)=>{
   let objType = req.params.objType;
   let id = req.params.idValue;
   let idField = req.params.idField;
+  //console.log(req.params);
   if(!id || !idField ||!objType){
     res.status("400").send("bad request");
   }

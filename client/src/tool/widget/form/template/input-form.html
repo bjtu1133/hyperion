@@ -10,6 +10,13 @@
             ng-readonly="field.readonly"
             ng-change="onFieldChange(field)"/>
         </div>
+        <div ng-if="field.type=='textarea'" class="input-group well-sm">
+          <span class="input-group-addon">{{field.label}}</span>
+          <textarea ng-model = "field.value"
+                    ng-readonly = "field.readonly"
+                    ng-change="onFieldChange(field)"
+                    class = "form-control" rows="4"></textarea>
+        </div>
         <div ng-if="field.type=='number'" class="input-group well-sm">
           <span class="input-group-addon">{{field.label}}</span>
           <input class="form-control" type="number"
@@ -33,4 +40,5 @@
               ng-readonly="field.readonly"/>
           </div>
         </div>
+
       </div>
