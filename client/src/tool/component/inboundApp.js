@@ -11,21 +11,45 @@ export default function inboundScheduleApp(moduleName){
   });
 }
 
-function inboundAppCtl(ObjectService,StorageService,$scope){
-
-
-  let testInboundId = 'J1487552724';
-
-  let q = {'objType':'Schedule',
-          'idField':'inboundId',
-          'idValue':'J1487552724'};
-
-
+function inboundAppCtl(ObjectService,
+                    StorageService,
+                    ViewDefLoacalStorage,
+                    $state,
+                    $scope){
   let ctrl = this;
-  console.log(ctrl.params);
+  //console.log(ctrl.fieldDef);
+  if(!ctrl.fieldDef || !ctrl.fieldDef.viewName){
+    let fieldDefInStorage = ViewDefLoacalStorage.get('inBound');
+    if(fieldDefInStorage){
+      ctrl.fieldDef = fieldDefInStorage;
+    }
+    else{
+      console.log('fieldDef Error');
+      return;
+    }
+  }
 
-  ObjectService.getById(q,(object)=>{
+  ViewDefLoacalStorage.set('inBound',ctrl.fieldDef);
+  //console.log(ctrl.params)
+  if(!ctrl.params.inboundId){
+    console.log('No InboundScheduleId');
+    return;
+  }
+
+  ObjectService.getById({
+          'objType':'Schedule',
+          'idField':'inboundId',
+          'idValue': ctrl.params.inboundId
+        },(object)=>{
     ctrl.scheduleInfo = object.doc;
+    if(!object.doc){
+      console.log('No InboundItem Found');
+      return;
+    }
+    if(object.doc.status=='close'){
+      console.log('schedule closed');
+      return;
+    }
     ctrl.inboundItems = object.doc.inboundItems;
 
     //go through all items, set default value
@@ -56,9 +80,9 @@ function inboundAppCtl(ObjectService,StorageService,$scope){
     inbound.scheduleId = ctrl.scheduleInfo.inboundId;
     inbound.requestNO = ctrl.scheduleInfo.requestNO;
     inbound.inboundItems = angular.copy(ctrl.inboundItems);
-    console.log(inbound);
+    //console.log(inbound);
     StorageService.createInbound(inbound,()=>{
-      console.log('finish');
+      $state.go('hyperion.home');
     });
   }
   $scope.showAddNewItemRow = (itemList) => {

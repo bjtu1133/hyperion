@@ -2,8 +2,10 @@
 
 let express = require ("express");
 let mongoUtil = require("../util/mongoUtil");
+let storageUtil = require("../util/inboundUtil");
 let bodyParser = require("body-parser");
 let routeUtil = require("./routeUtil");
+
 let jsonParser = bodyParser.json();
 
 let inboundRoute = express.Router();
@@ -19,11 +21,14 @@ inboundRoute.post("/create",jsonParser,(req,res)=>{
 
   let inbound = reqBody;
 
+  let inboundItems = inbound.inboundItems;
+
   let scheduleCol = mongoUtil.getCollection("Schedule");
+  let storageCol = mongoUtil.getCollection("Storage");
 
   mongoUtil.getCollection("Inbound").save(inbound,(err,doc)=>{
     //Close previous schedule
-    scheduleCol.update({"inboundId":inbound.scheduleId},{$set:{"status":"close"}})
+    scheduleCol.update({"inboundId":inbound.scheduleId},{$set:{"status":"close"}});
     res.json(doc);
   });
 });

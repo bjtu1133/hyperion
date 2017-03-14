@@ -4,7 +4,7 @@ export default function route (moduleName){
   let app = angular.module(moduleName)
   app.config(($stateProvider,$urlRouterProvider)=>{
 
-    $urlRouterProvider.otherwise('hyperion/inboundApp');
+    $urlRouterProvider.otherwise('hyperion/home');
 
     $stateProvider.state('hyperion',{
       url : '/hyperion',

@@ -3,7 +3,7 @@ import importForm from './form/inputForm';
 import rangeField from './form/rangeField';
 import textSearchField from './form/textSearchField';
 import assocPicker from './assocPicker/assocPicker';
-import listView from './layout/listView';
+import filterListPanel from './layout/filterListPanel';
 import infoTable from './layout/infoTable';
 import listTable from './layout/listTable';
 import inputPanel from './layout/inputPanel';
@@ -19,7 +19,7 @@ export default function(moduleName){
   rangeField(moduleName);
   textSearchField(moduleName);
   assocPicker(moduleName);
-  listView(moduleName);
+  filterListPanel(moduleName);
   listTable(moduleName);
   listPanel(moduleName);
   inputPanel(moduleName);

@@ -12,7 +12,8 @@ export default function inboundScheduleApp(moduleName){
     function(ObjectService,
             ViewDefLoacalStorage,
             StorageService,
-            $scope){
+            $scope,
+            $state){
     //console.log(this);
     let ctrl = this;
 
@@ -60,6 +61,7 @@ export default function inboundScheduleApp(moduleName){
       //console.log(schedule);
       StorageService.createSchedule(schedule,()=>{
         console.log('finish');
+        $state.go('hyperion.home');
       });
       //console.log(ctrl.inboundItems);
     }

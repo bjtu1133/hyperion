@@ -4,14 +4,14 @@ export default function(moduleName){
   angular.module(moduleName)
   .component('listPanel', {
     templateUrl: './src/tool/widget/layout/template/list-panel.html',
-    controller: inputPanelCtl,
+    controller: listPanelCtl,
     bindings:{
       fieldDef : '<',
       inputObject : '<',
     }
   });
 }
-function inputPanelCtl($scope,$state){
+function listPanelCtl($scope,$state){
 
   let ctrl = this;
 

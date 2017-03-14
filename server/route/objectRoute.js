@@ -18,13 +18,13 @@ objectRouter.get("/:objType",jsonParser,(req,res)=>{
 
 objectRouter.post("/query/:objType",jsonParser,(req,res)=>{
   let reqBody = req.body;
-  let q = mongoUtil.buildQuery(reqBody);
+  //let q = mongoUtil.buildQuery(reqBody);
 /*
   let q = {
     "period" : {$gte:1609,$lte:1609}
   }*/
-
-  mongoUtil.getCollection(req.params.objType).find().toArray((err,doc) => {
+  //console.log(q);
+  mongoUtil.getCollection(req.params.objType).find(req.body).toArray((err,doc) => {
     if(err){
       res.status("500").send("internal error");
     }else

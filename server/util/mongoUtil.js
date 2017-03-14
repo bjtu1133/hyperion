@@ -18,15 +18,4 @@ module.exports = {
   getCollection(collectionName){
     return _db.collection(collectionName);
   },
-  buildQuery(data){
-    let query = {};
-    for(let key in data){
-      if(!data[key]||!data[key].fieldName){
-        continue;
-      }else if(data[key].fieldType == "range"){
-        
-      }
-    }
-    return query;
-  }
 }
