@@ -26,7 +26,7 @@ function filterPanelCtl(ObjectService,$scope){
 
   $scope.submit= ()=>{
     //console.log(ctrl.inputObject);
-    ObjectService.query({'objType':'Tire'},{},(doc)=>{
+    ObjectService.query({'objType':fieldDef.objType},ctrl.inputObject,(doc)=>{
       options.splice(0,options.length);
       doc.forEach((item)=>{
         options.push(item);

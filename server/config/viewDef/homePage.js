@@ -78,13 +78,28 @@ let homePage = {
       "displayConfig":{
         "title":["inboundId","provider"],
         "body" :["requestNO","scheduleOperator","date","status"]
+      }
+    },
+    "activeOutboundSchedulePane":{
+      "label" : "待完成的出库计划",
+      "type" : "filterListPanel",
+      "objType" : "OutboundSchedule",
+      //If the item in filterList Panel is clickable, identify target
+      "target" : "hyperion.outboundApp",
+      "targetCfg" : {
+        //The string key associate with the object going to pass to the object
+        "targetKey" : "outboundId",
+        //The string key from item (same object with displayConfig)
+        "itemKey" : "outboundId"
       },
-      "fields":{
-        "inboundId":{
-          "name":"inboundId",
-          "label" : "入库计划单号",
-          "type" : "text",
-        }
+      //query for loading itemList
+      "onLoadQuery" : {
+        "objectType" : "OutboundSchedlue",
+        "status" : "open"
+      },
+      "displayConfig":{
+        "title":["outboundId","provider"],
+        "body" :["requestNO","driver","distributor","date","status"]
       }
     }
   }

@@ -6,6 +6,7 @@ let loginRoute = require("../route/loginRoute");
 let authRoute = require("../route/authRoute");
 let viewRoute = require("../route/viewRoute");
 let inboundRoute = require("../route/inboundRoute");
+let outboundRoute = require("../route/outboundRoute");
 let sessionUtil = require("./sessionUtil");
 
 let serverUtil = {
@@ -21,6 +22,7 @@ let serverUtil = {
     app.use("/auth",authRoute);
     app.use("/view",viewRoute);
     app.use("/inbound",inboundRoute);
+    app.use("/outbound",outboundRoute);
     return app;
   }
 

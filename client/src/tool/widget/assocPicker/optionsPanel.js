@@ -1,5 +1,7 @@
 'use strict'
 
+import {printLabel} from '../../util';
+
 export default function(moduleName){
   angular.module(moduleName)
   .component('optionsPanel', {
@@ -22,17 +24,10 @@ function optionsPanelCtl($scope){
   $scope.idField=ctrl.fieldDef.idField;
   $scope.selectedItemIds = ctrl.selectedItemIds;
   $scope.numOfItems = 10;
-  $scope.printLabel = (item,cfg)=>{
-    let label='';
-    cfg.forEach((key)=>{
-      label = (label.length>0)?
-          label+" | "+item[key] : item[key];
-    })
-    return label;
-  };
+  $scope.printLabel = printLabel;
 
   $scope.select = (item)=>{
-    $scope.selectedItemIds.push(item['itemCode']);
+    $scope.selectedItemIds.push(item[$scope.idField]);
     ctrl.selectedItems.push(item);
     ctrl.onSelected();
   };

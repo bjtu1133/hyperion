@@ -78,5 +78,15 @@ export default function route (moduleName){
         }
       }
     });
+    $stateProvider.state('hyperion.outboundScheduleApp',{
+      url : '/outboundScheduleApp',
+      templateUrl : './src/template/app/outbound-schedule-app.html',
+      controller : 'baseCtl',
+      resolve : {
+        data : function(ViewDefService){
+          return ViewDefService.get({'viewName':'outboundScheduleApp'});
+        }
+      }
+    });
   });
 }

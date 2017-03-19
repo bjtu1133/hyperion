@@ -11,6 +11,7 @@ export default function(moduleName){
     controller : assocPickerCtl,
     bindings:{
       fieldDef : '<',
+      //out put
       selectedItems:'=',
       selectedItemIds:'='
     }
@@ -21,8 +22,10 @@ function assocPickerCtl(){
   let ctrl = this;
   ctrl.filterFiledDef = ctrl.fieldDef.filter;
   ctrl.optionsFiledDef = ctrl.fieldDef.options;
-  ctrl.selectedItems =[];
-  ctrl.selectedItemIds =[];
+  if(!ctrl.selectedItems)
+    ctrl.selectedItems =[];
+  if(!ctrl.selectedItemIds)
+    ctrl.selectedItemIds =[];
   ctrl.optionsStore = [];
   ctrl.onFilter = ()=>{
     console.log(ctrl.optionsStore);

@@ -42,8 +42,9 @@ let increaseStorage = (inbound)=>{
     },
     {
       $inc:{amount : item.actual},
-      $set:{lastUpdatedTime : new Date(),
-              lastUpdatedBy : inbound.inboundId}
+      $set:{storageId : item.itemCode+item.dot+item.storageBinId,
+          lastUpdatedTime : new Date(),
+          lastUpdatedBy : inbound.inboundId}
     },
     {
      upsert: true,

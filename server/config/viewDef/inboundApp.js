@@ -71,6 +71,7 @@ let inboundApp = {
   "itemList" : {
     "showHeader" : true,
     "newItemTemplateAttr" : ["brand"],
+    "addNewButtonEnable" : true,
     "newItemRow" : {
       "columns" : [{
             "name":"storageBinId",

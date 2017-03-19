@@ -1,0 +1,51 @@
+<div class="panel panel-primary ">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel1">
+    第一步 ： {{$ctrl.generalInfo.label}}
+  </div>
+  <div ng-if = "mode == 'edit'" class="collapse-panel1 panel-body collapse in">
+    <input-form field-def="$ctrl.generalInfo"
+                input-object = "$ctrl.generalInfoObject"
+                on-update="$ctrl.onGeneralInfoUpdate()">
+    </input-form>
+  </div>
+</div>
+<div class="panel panel-primary ">
+    <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel2">
+      第二步 ： {{$ctrl.storagePicker.label}}
+    </div>
+    <div ng-if = "mode == 'edit'" class="panel-body collapse-panel2 collapse">
+      <assoc-picker field-def="$ctrl.storagePicker"
+                    selected-item-ids="outboundStorageIds"
+                    selected-items="outboundItems"></assoc-picker>
+    </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel3">
+    第三步 ：{{$ctrl.outboundSchedule.label}}
+  </div>
+  <div class="panel-body collapse-panel3 collapse">
+    <div ng-if = "mode == 'edit'">
+      <edit-list-table field-def="$ctrl.outboundSchedule"
+                  item-list="outboundItems"
+                  on-complete = ""></edit-list-table>
+
+      <button ng-click = "review()"
+                  class="btn btn-sm btn-info pull-right">完成出库计划单</button>
+    </div>
+    <div ng-if = "mode == 'review'">
+      <h4>{{$ctrl.fieldDef.label}}</h3>
+      <h5>{{$ctrl.generalInfo.label}}</h5>
+      <info-table field-def="$ctrl.generalInfo"
+                  data="$ctrl.generalInfoObject"></info-table>
+      <h5>{{$ctrl.outboundSchedule.label}}</h5>
+      <list-table field-def="$ctrl.outboundSchedule"
+                  item-list="outboundItems"></list-table>
+      <button ng-click = "edit()"
+                  class="btn btn-sm btn-info">修改出库计划单</button>
+      <button ng-click = "edit()"
+                  class="btn btn-sm btn-info">打印出库计划单</button>
+      <button ng-click = "createOutboundSchedule()"
+                  class="btn btn-sm btn-info">提交出库计划单</button>
+    </div>
+
+</div>

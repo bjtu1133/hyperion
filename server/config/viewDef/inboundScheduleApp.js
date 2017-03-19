@@ -46,6 +46,7 @@ let inboundScheduleApp = {
       "filter":{
         "name":"filter",
         "label" : "选择器",
+        "objType" : "Tire",
         "fields":{
           "itemCode":{
             "name":"itemCode",

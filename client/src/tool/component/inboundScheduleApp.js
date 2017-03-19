@@ -34,7 +34,6 @@ export default function inboundScheduleApp(moduleName){
     ctrl.itemPickerFieldDef = components.itemPicker;
     ctrl.storageBinPickerFieldDef = components.storageBinPicker;
     ctrl.reviewPaneFieldDef = components.reviewPane;
-    ctrl.inboundTireIds = [];
     ctrl.inboundItems= {};
     ctrl.generalInfoObject = {};
     ctrl.reviewGeneralInfoObject = {};

@@ -1,10 +1,10 @@
 
-<edit-table-row ng-if="addNewItemRowVisible"
+<edit-table-row ng-if="addNewItemRowVisible && addNewButtonEnable"
             field-def="$ctrl.fieldDef.newItemRow"
             item = "$ctrl.newItem"
             on-submit = "$ctrl.addNewItem()"></edit-table-row>
 
-<button ng-if="!addNewItemRowVisible"
+<button ng-if="!addNewItemRowVisible && addNewButtonEnable"
         class="btn btn-primary btn-xs"
         ng-click="showAddNewItemRow()">添加新的记录</button>
 

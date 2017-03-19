@@ -23,7 +23,7 @@ objectRouter.post("/query/:objType",jsonParser,(req,res)=>{
   let q = {
     "period" : {$gte:1609,$lte:1609}
   }*/
-  //console.log(q);
+  console.log(req.body);
   mongoUtil.getCollection(req.params.objType).find(req.body).toArray((err,doc) => {
     if(err){
       res.status("500").send("internal error");
