@@ -14,7 +14,7 @@ let inboundApp = {
       },
 
       "warehouseManager" : {
-          "name":"inboundOperator",
+          "name":"warehouseManager",
           "label" : "仓库负责人",
           "type" : "text"
       },
@@ -40,19 +40,15 @@ let inboundApp = {
     }
   },
   "scheduleInfo":{
-    "label" : "入库计划计划信息",
+    "label" : "出库计划信息",
     "fields":[{
-        "name":"inboundId",
-        "label" : "入库计划单号",
+        "name":"outboundId",
+        "label" : "出库计划单号",
         "type" : "text"
       },{
         "name":"date",
-        "label" : "入库日期",
+        "label" : "出库日期",
         "type" : "date"
-      },{
-        "name":"ifChargeInboundFee",
-        "label" : "是否收入库费",
-        "type" : "boolean"
       },{
         "name":"scheduleOperator",
         "label" : "计划单操作人",

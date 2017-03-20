@@ -91,7 +91,7 @@ let outboundScheduleApp = {
             "label" : "库存数量",
             "type" : "text"
         },{
-            "name" : "actual",
+            "name" : "schedule",
             "label" : "出库数量",
             "type" : "input_number"
         }

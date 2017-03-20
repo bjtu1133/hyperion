@@ -5,6 +5,7 @@ import widget from './widget/widget'
 import inboundScheduleApp from './component/inboundScheduleApp';
 import outboundScheduleApp from './component/outboundScheduleApp';
 import inboundApp from './component/inboundApp';
+import outboundApp from './component/outboundApp';
 
 export default function(moduleName){
 
@@ -14,4 +15,5 @@ export default function(moduleName){
   inboundScheduleApp(moduleName);
   outboundScheduleApp(moduleName);
   inboundApp(moduleName);
+  outboundApp(moduleName);
 }

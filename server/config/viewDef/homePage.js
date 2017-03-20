@@ -34,10 +34,10 @@ let homePage = {
       "name" : "newOutboundSchedule",
       "label" : "填写出库计划单",
       "type" : "inputPanel",
-      "target" : "hyperion.inboundApp",
+      "target" : "hyperion.outboundScheduleApp",
       "fields":{
-        "inboundId":{
-          "name":"inboundId",
+        "requestNO":{
+          "name":"requestNO",
           "label" : "客户单号",
           "type" : "text",
         }
@@ -47,10 +47,10 @@ let homePage = {
       "name":"newOutbound",
       "label" : "填写出库单",
       "type" : "inputPanel",
-      "target" : "hyperion.inboundApp",
+      "target" : "hyperion.outboundApp",
       "fields":{
         "outboundScheduleId":{
-          "name":"outboundScheduleId",
+          "name":"outboundId",
           "label" : "出库计划单号",
           "type" : "text",
         }
@@ -98,7 +98,7 @@ let homePage = {
         "status" : "open"
       },
       "displayConfig":{
-        "title":["outboundId","provider"],
+        "title":["outboundId"],
         "body" :["requestNO","driver","distributor","date","status"]
       }
     }

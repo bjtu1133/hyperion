@@ -88,5 +88,16 @@ export default function route (moduleName){
         }
       }
     });
+    $stateProvider.state('hyperion.outboundApp',{
+      url : '/outboundApp',
+      params : {outboundId : null},
+      templateUrl : './src/template/app/outbound-app.html',
+      controller : 'baseCtl',
+      resolve : {
+        data : function(ViewDefService){
+          return ViewDefService.get({'viewName':'outboundApp'});
+        }
+      }
+    });
   });
 }
