@@ -4,6 +4,7 @@ import storageCtl from './storageCtl';
 import listCtl from './listCtl';
 import summaryCtl from './summaryCtl';
 import hyperionCtl from './hyperionCtl';
+import baseCtl from './baseCtl';
 
 export default function controller (moduleName){
 
@@ -14,4 +15,5 @@ export default function controller (moduleName){
   module.controller('listCtl',listCtl);
   module.controller('summaryCtl',summaryCtl);
   module.controller('hyperionCtl',hyperionCtl);
+  module.controller('baseCtl',baseCtl);
 }

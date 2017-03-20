@@ -18,14 +18,4 @@ module.exports = {
   getCollection(collectionName){
     return _db.collection(collectionName);
   },
- /*
- * Sample code
- */
-  tires() {
-    return _db.collection("tires");
-  },
-
-  brands() {
-    return _db.collection("testBrand")
-  }
 }

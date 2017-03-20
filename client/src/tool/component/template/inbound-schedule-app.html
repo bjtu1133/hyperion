@@ -1,0 +1,70 @@
+<div class="panel panel-primary ">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel1">
+    第一步 ： {{$ctrl.generalInfoFieldDef.label}}
+  </div>
+  <div class="collapse-panel1 panel-body collapse in">
+    <input-form field-def="$ctrl.generalInfoFieldDef"
+                input-object = "$ctrl.generalInfoObject"
+                on-update="$ctrl.onGeneralInfoUpdate()">
+    </input-form>
+  </div>
+</div>
+<div class="panel panel-primary ">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel2">
+    第二步 ： {{$ctrl.itemPickerFieldDef.label}}
+  </div>
+  <div class="panel-body collapse-panel2 collapse">
+    <assoc-picker field-def="$ctrl.itemPickerFieldDef"
+                  selected-item-ids="inboundTireIds"
+                  selected-items="inboundTires"></assoc-picker>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel3">
+    第三步 ：{{$ctrl.storageBinPickerFieldDef.label}}
+  </div>
+  <div class="panel-body collapse-panel3 collapse">
+    <h5 ng-show="inboundTires.length==0">
+      列表为空
+    </h5>
+    <div ng-repeat = "tire in inboundTires">
+      <div class="panel panel-primary ">
+        <div class="panel-heading">
+          轮胎代码 ： {{tire.itemCode}}
+        </div>
+        <div class="panel-body">
+          <div class="collapse-panel1 panel-body">
+            <storage-bin-selector field-def="$ctrl.storageBinPickerFieldDef"
+                                  inbound-item-info = "tire"
+                                  on-complete = "$ctrl.addInboundItems()"
+                                  inbound-items = "$ctrl.inboundItems">
+            </storage-bin-selector>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-primary ">
+  <div class="panel-heading collapsed" data-toggle="collapse" data-target=".collapse-panel">
+    第四步 ： {{$ctrl.reviewPaneFieldDef.label}}
+  </div>
+  <div class="panel-body collapse-panel collapse">
+    <h4>入库计划单</h4>
+    <button ng-click = "createInboundSchedule()"
+            class="btn btn-xs btn-info pull-right">打印入库计划单</button>
+    <button ng-click = "createInboundSchedule()"
+            class="btn btn-xs btn-info pull-right">完成入库计划</button>
+    <info-table field-def="$ctrl.reviewPaneFieldDef.generalInfo"
+                data="$ctrl.reviewGeneralInfoObject"></info-table>
+    <div ng-repeat="(itemCode,itemList) in inboundItems">
+      <h5>轮胎代码 ： {{itemCode}}</h5>
+      <list-table field-def="$ctrl.reviewPaneFieldDef.itemList"
+                  item-list="itemList"></list-table>
+    </div>
+    <button ng-click = "createInboundSchedule()"
+            class="btn btn-sm btn-info">打印入库计划单</button>
+    <button ng-click = "createInboundSchedule()"
+            class="btn btn-sm btn-info">完成入库计划</button>
+  </div>
+</div>

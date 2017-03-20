@@ -1,0 +1,10 @@
+<div class="input-group well-sm">
+  <span class="input-group-addon">{{label['default']}}</span>
+  <input ng-model = "fields.from.value"
+    class="form-control" type="number"
+    ng-change = "onChange()"/>
+  <span class="input-group-addon">{{fields.to.label['default']}}</span>
+  <input ng-model = "fields.to.value"
+    type="number" class="form-control"
+    ng-change = "onChange()"/>
+</div>

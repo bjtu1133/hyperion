@@ -1,0 +1,16 @@
+<div class="input-group well-sm">
+  <span class="input-group-addon">{{fieldLabel["default"]}}</span>
+  <div class="dropdown">
+    <input ng-model = "value"
+           type="text" class="form-control dropdown-toggle"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <div class="dropdown-menu dropdown-menu-down list-group" style="top:35px;padding:0">
+      <a  href="" class="list-group-item"
+         ng-repeat = "option in options | filter : value"
+         ng-click = "onOptionSelected(option)">
+          <h5 class="list-group-item-heading">{{option.header}}</h5>
+          <h6>{{option.body}}</h6>
+      </a>
+  </div>
+</div>
+</div>

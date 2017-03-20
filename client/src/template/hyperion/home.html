@@ -1,0 +1,12 @@
+<div class="container">
+  <div ng-repeat = "section in data.section1" class="col-lg-4">
+    <input-panel ng-if = "section.type == 'inputPanel'" field-def="section"></input-panel>
+    <filter-list-panel ng-if = "section.type == 'filterListPanel'" field-def="section"></filter-list-panel>
+  </div>
+</div>
+<div class="container">
+  <div ng-repeat = "section in data.section2" class="col-lg-5">
+    <input-panel ng-if = "section.type == 'inputPanel'" field-def="section"></input-panel>
+    <filter-list-panel ng-if = "section.type == 'filterListPanel'" field-def="section"></filter-list-panel>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+
+
+<div class="panel panel-primary ">
+  <div class="panel-heading">
+    {{header}}
+  </div>
+  <div class="panel-body">
+    <h5 ng-show="store.length==0">
+      列表为空
+    </h5>
+    <div ng-repeat="item in store">
+      <a class="list-group-item" ng-click="onItemClick(item)">
+        <h4 class="list-group-item-heading" ng-bind="printLabel(item,displayConfig.title)">
+        </h4>
+        <p class="list-group-item-text" ng-bind="printLabel(item,displayConfig.body)"></p>
+      </a>
+    </div>
+  </div>
+</div>
