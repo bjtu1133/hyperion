@@ -18,48 +18,48 @@ function outboundAppCtl(ObjectService,
                     $scope){
   let ctrl = this;
 
-  console.log(ctrl);
-
-  if(!ctrl.fieldDef || !ctrl.fieldDef.viewName){
-    let fieldDefInStorage = ViewDefLoacalStorage.get('outBound');
-    if(fieldDefInStorage){
-      ctrl.fieldDef = fieldDefInStorage;
+  ctrl.$onInit = ()=>{
+    if(!ctrl.fieldDef || !ctrl.fieldDef.viewName){
+      let fieldDefInStorage = ViewDefLoacalStorage.get('outBound');
+      if(fieldDefInStorage){
+        ctrl.fieldDef = fieldDefInStorage;
+      }
+      else{
+        console.log('fieldDef Error');
+        return;
+      }
     }
-    else{
-      console.log('fieldDef Error');
+
+    ViewDefLoacalStorage.set('outBound',ctrl.fieldDef);
+
+    if(!ctrl.params.outboundId){
+      console.log('No OutBoundScheduleID');
       return;
     }
-  }
+    //Load OutboundItems
+    ctrl.outboundItems = [];
+    ctrl.leftOverItems = [];
+    ObjectService.getById({
+            'objType':'OutboundSchedule',
+            'idField':'outboundId',
+            'idValue': ctrl.params.outboundId
+          },(object)=>{
+      ctrl.scheduleInfo = object.doc;
+      if(!object.doc){
+        console.log('No OutboundItem Found');
+        return;
+      }
+      if(object.doc.status=='close'){
+        console.log('schedule closed');
+        return;
+      }
 
-  ViewDefLoacalStorage.set('outBound',ctrl.fieldDef);
+      object.doc.outboundItems.forEach((item)=>{
+        ctrl.outboundItems.push(item);
+      });
 
-  if(!ctrl.params.outboundId){
-    console.log('No OutBoundScheduleID');
-    return;
-  }
-  //Load OutboundItems
-  ctrl.outboundItems = [];
-  ctrl.leftOverItems = [];
-  ObjectService.getById({
-          'objType':'OutboundSchedule',
-          'idField':'outboundId',
-          'idValue': ctrl.params.outboundId
-        },(object)=>{
-    ctrl.scheduleInfo = object.doc;
-    if(!object.doc){
-      console.log('No OutboundItem Found');
-      return;
-    }
-    if(object.doc.status=='close'){
-      console.log('schedule closed');
-      return;
-    }
-
-    object.doc.outboundItems.forEach((item)=>{
-      ctrl.outboundItems.push(item);
     });
-
-  });
+  }
 
   $scope.mode = 'edit';
   $scope.review = () => {

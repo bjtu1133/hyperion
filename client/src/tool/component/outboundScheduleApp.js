@@ -17,48 +17,49 @@ export default function outboundScheduleApp(moduleName){
             $state){
     //console.log(this);
     let ctrl = this;
-
-    if(!ctrl.fieldDef || !ctrl.fieldDef.components){
-      let fieldDefInStorage = ViewDefLoacalStorage.get('outboundSchedule');
-      if(fieldDefInStorage){
-        ctrl.fieldDef = fieldDefInStorage;
+    ctrl.$onInit = ()=>{
+      if(!ctrl.fieldDef || !ctrl.fieldDef.components){
+        let fieldDefInStorage = ViewDefLoacalStorage.get('outboundSchedule');
+        if(fieldDefInStorage){
+          ctrl.fieldDef = fieldDefInStorage;
+        }
+        else{
+          console.log('fieldDef Error');
+          return;
+        }
       }
-      else{
-        console.log('fieldDef Error');
-        return;
-      }
-    }
-    ViewDefLoacalStorage.set('outboundSchedule',ctrl.fieldDef);
+      ViewDefLoacalStorage.set('outboundSchedule',ctrl.fieldDef);
 
-    let fieldDef = ctrl.fieldDef;
-    let components = ctrl.fieldDef.components;
-    ctrl.generalInfo = components.generalInfo;
-    ctrl.storagePicker = components.storagePicker;
-    ctrl.outboundSchedule = components.outboundSchedule;
+      let fieldDef = ctrl.fieldDef;
+      let components = ctrl.fieldDef.components;
+      ctrl.generalInfo = components.generalInfo;
+      ctrl.storagePicker = components.storagePicker;
+      ctrl.outboundSchedule = components.outboundSchedule;
 
-    ctrl.generalInfoObject = {};
-    ctrl.generalInfoObject.outboundId
-      = ctrl.generalInfo.fields.outboundId.value
-      = 'OS'+((Date.parse(new Date()))/1000);
+      ctrl.generalInfoObject = {};
+      ctrl.generalInfoObject.outboundId
+        = ctrl.generalInfo.fields.outboundId.value
+        = 'OS'+((Date.parse(new Date()))/1000);
 
-    $scope.mode = 'edit';
-    $scope.outboundItems = [];
-    $scope.outboundStorageIds =[];
-
-    $scope.review = ()=>{
-      $scope.mode = 'review';
-    }
-    $scope.edit = ()=>{
       $scope.mode = 'edit';
+      $scope.outboundItems = [];
+      $scope.outboundStorageIds =[];
+
+      $scope.review = ()=>{
+        $scope.mode = 'review';
+      }
+      $scope.edit = ()=>{
+        $scope.mode = 'edit';
+      }
+      $scope.createOutboundSchedule = ()=>{
+        console.log('abc');
+        let schedule = angular.copy(ctrl.generalInfoObject);
+        console.log(schedule);
+        schedule.outboundItems = $scope.outboundItems;
+        StorageService.createOutboundSchedule(schedule,()=>{
+          $state.go('hyperion.home');
+        });
+      };
     }
-    $scope.createOutboundSchedule = ()=>{
-      console.log('abc');
-      let schedule = angular.copy(ctrl.generalInfoObject);
-      console.log(schedule);
-      schedule.outboundItems = $scope.outboundItems;
-      StorageService.createOutboundSchedule(schedule,()=>{
-        $state.go('hyperion.home');
-      });
-    };
   });
 }
