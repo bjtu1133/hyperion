@@ -20,18 +20,21 @@ export default function(moduleName){
 
 function assocPickerCtl(){
   let ctrl = this;
-  ctrl.filterFiledDef = ctrl.fieldDef.filter;
-  ctrl.optionsFiledDef = ctrl.fieldDef.options;
-  if(!ctrl.selectedItems)
-    ctrl.selectedItems =[];
-  if(!ctrl.selectedItemIds)
-    ctrl.selectedItemIds =[];
-  ctrl.optionsStore = [];
-  ctrl.onFilter = ()=>{
-    console.log(ctrl.optionsStore);
+  ctrl.$onInit = ()=>{
+    ctrl.filterFiledDef = ctrl.fieldDef.filter;
+    ctrl.optionsFiledDef = ctrl.fieldDef.options;
+    if(!ctrl.selectedItems)
+      ctrl.selectedItems =[];
+    if(!ctrl.selectedItemIds)
+      ctrl.selectedItemIds =[];
+    ctrl.optionsStore = [];
+    ctrl.onFilter = ()=>{
+      console.log(ctrl.optionsStore);
+    }
+    ctrl.onSelected = () =>{
+      console.log(ctrl.selectedItems);
+    }
   }
-  ctrl.onSelected = () =>{
-    console.log(ctrl.selectedItems);
-  }
+
   //console.log(ctrl);
 }
