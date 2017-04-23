@@ -14,13 +14,14 @@ export default function(moduleName){
 function infoTableCtl($scope){
   //console.log(this);
   let ctrl = this;
-
-  this.$onChanges = ()=>{
+  ctrl.$onInit = () =>{
+    $scope.parseDate = (date)=>{
+      if(date)
+        return new Date(date).toLocaleDateString();
+    };
+  }
+  ctrl.$onChanges = ()=>{
     $scope.data = ctrl.data;
   };
 
-  $scope.parseDate = (date)=>{
-    if(date)
-      return new Date(date).toLocaleDateString();
-  };
 }

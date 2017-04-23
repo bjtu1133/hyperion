@@ -13,22 +13,22 @@ export default function(moduleName){
 }
 function editListTableCtl($scope){
   let ctrl = this;
-  
-  ctrl.newItem = createTemplate(ctrl.itemList[0],ctrl.fieldDef.newItemTemplateAttr);
-
-  ctrl.addNewItem = ()=>{
-    ctrl.itemList.push(ctrl.newItem);
-    $scope.addNewItemRowVisible = false;
+  ctrl.$onInit =()=>{
     ctrl.newItem = createTemplate(ctrl.itemList[0],ctrl.fieldDef.newItemTemplateAttr);
-  };
-  $scope.addNewButtonEnable = ctrl.fieldDef.addNewButtonEnable;
-  $scope.columns = ctrl.fieldDef.columns;
-  $scope.showHeader = ctrl.fieldDef.showHeader;
-  $scope.addNewItemRowVisible = false;
-  $scope.itemList = ctrl.itemList;
-  $scope.showAddNewItemRow = ()=>{
-    $scope.addNewItemRowVisible = true;
-  };
+    ctrl.addNewItem = ()=>{
+      ctrl.itemList.push(ctrl.newItem);
+      $scope.addNewItemRowVisible = false;
+      ctrl.newItem = createTemplate(ctrl.itemList[0],ctrl.fieldDef.newItemTemplateAttr);
+    };
+    $scope.addNewButtonEnable = ctrl.fieldDef.addNewButtonEnable;
+    $scope.columns = ctrl.fieldDef.columns;
+    $scope.showHeader = ctrl.fieldDef.showHeader;
+    $scope.addNewItemRowVisible = false;
+    $scope.itemList = ctrl.itemList;
+    $scope.showAddNewItemRow = ()=>{
+      $scope.addNewItemRowVisible = true;
+    };
+  }
   //console.log(ctrl);
 }
 

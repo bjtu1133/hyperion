@@ -12,11 +12,12 @@ export default function(moduleName){
 
 function listTableCtl($scope){
   let ctrl = this;
+  ctrl.$onInit = ()=>{
+    $scope.columns = ctrl.fieldDef.columns;
 
-  $scope.columns = ctrl.fieldDef.columns;
-
-  this.$onChanges = ()=>{
-    $scope.itemList = ctrl.itemList;
+    this.$onChanges = ()=>{
+      $scope.itemList = ctrl.itemList;
+    }
   }
   console.log(ctrl);
 }

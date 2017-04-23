@@ -15,14 +15,15 @@ function inputPanelCtl($scope,$state){
 
   let ctrl = this;
 
-  $scope.fieldDef = ctrl.fieldDef;
+  ctrl.$onInit = ()=>{
+    $scope.fieldDef = ctrl.fieldDef;
 
-  ctrl.inputObject = {};
+    ctrl.inputObject = {};
 
-  $scope.submit = ()=>{
+    $scope.submit = ()=>{
 
-    $state.go(ctrl.fieldDef.target,ctrl.inputObject);
-  };
-
+      $state.go(ctrl.fieldDef.target,ctrl.inputObject);
+    };
+  }
   //console.log(ctrl);
 }

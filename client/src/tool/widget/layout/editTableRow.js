@@ -14,12 +14,13 @@ export default function(moduleName){
 }
 function editTableRowCtl($scope){
   let ctrl = this;
-
-  $scope.columns = ctrl.fieldDef.columns;
-  $scope.item = ctrl.item;
-  $scope.submit = ()=>{
-    ctrl.onSubmit();
-    console.log(ctrl.item);
+  ctrl.$onInit =()=>{
+    $scope.columns = ctrl.fieldDef.columns;
+    $scope.item = ctrl.item;
+    $scope.submit = ()=>{
+      ctrl.onSubmit();
+      console.log(ctrl.item);
+    }
   }
 
   console.log(ctrl);
