@@ -14,7 +14,7 @@ export default function(moduleName){
 }
 function inputFormCtl($scope){
   let ctrl = this;
-  ctrl.$onInt = ()=>{
+  ctrl.$onInit = ()=>{
     if (!ctrl.fieldDef || !ctrl.fieldDef.fields){
       console.log('field def error');
       return;
