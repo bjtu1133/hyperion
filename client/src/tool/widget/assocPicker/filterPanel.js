@@ -14,25 +14,27 @@ export default function(moduleName){
 }
 function filterPanelCtl(ObjectService,$scope){
   let ctrl = this;
-  if (!ctrl.fieldDef || !ctrl.fieldDef.fields){
-    console.log('field def error');
-    return;
-  }
-  ctrl.inputObject = {};
-  let fieldDef = ctrl.fieldDef;
-  let options = ctrl.options;
+  ctrl.$inInit = ()=>{
+    if (!ctrl.fieldDef || !ctrl.fieldDef.fields){
+      console.log('field def error');
+      return;
+    }
+    ctrl.inputObject = {};
+    let fieldDef = ctrl.fieldDef;
+    let options = ctrl.options;
 
-  $scope.fields = Object.keys(fieldDef.fields).map(key=>fieldDef.fields[key]);
+    $scope.fields = Object.keys(fieldDef.fields).map(key=>fieldDef.fields[key]);
 
-  $scope.submit= ()=>{
-    //console.log(ctrl.inputObject);
-    ObjectService.query({'objType':fieldDef.objType},ctrl.inputObject,(doc)=>{
-      options.splice(0,options.length);
-      doc.forEach((item)=>{
-        options.push(item);
+    $scope.submit= ()=>{
+      //console.log(ctrl.inputObject);
+      ObjectService.query({'objType':fieldDef.objType},ctrl.inputObject,(doc)=>{
+        options.splice(0,options.length);
+        doc.forEach((item)=>{
+          options.push(item);
+        });
+        ctrl.onFilter();
       });
-      ctrl.onFilter();
-    });
+    }
   }
   //console.log(ctrl);
 }
