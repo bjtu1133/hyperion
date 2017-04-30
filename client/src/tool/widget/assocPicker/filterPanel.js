@@ -14,7 +14,7 @@ export default function(moduleName){
 }
 function filterPanelCtl(ObjectService,$scope){
   let ctrl = this;
-  ctrl.$inInit = ()=>{
+  ctrl.$onInit = ()=>{
     if (!ctrl.fieldDef || !ctrl.fieldDef.fields){
       console.log('field def error');
       return;
